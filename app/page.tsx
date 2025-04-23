@@ -6,7 +6,7 @@ import { Bell, ChevronDown, Globe, Menu, PenSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import useEmblaCarousel from 'embla-carousel-react';
-
+import Link from "next/link";
 import Autoplay from 'embla-carousel-autoplay';
 import {
   DropdownMenu,
@@ -131,12 +131,13 @@ export default function Home() {
               l'un des premiers pays africains à opérer une transition démocratique pacifique.
             </p>
           </div>
-          <Button
-            onClick={() => setIsHistoryExpanded(!isHistoryExpanded)}
-            className="mt-6 bg-[#8B4513] hover:bg-[#5C4033] text-white"
-          >
-            {isHistoryExpanded ? "Voir moins" : "Lire plus"}
-          </Button>
+          <Link href="/histoire">
+  <Button
+    className="mt-6 bg-[#8B4513] hover:bg-[#5C4033] text-white"
+  >
+    Lire l'article complet →
+  </Button>
+</Link>
         </div>
       </section>
 

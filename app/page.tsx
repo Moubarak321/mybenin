@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import HeroCarousel from "@/components/carousel";
+import { ArticleButton } from "@/components/ui/articleButton";
 
 const carouselImages = [
   {
@@ -131,13 +132,17 @@ export default function Home() {
               l'un des premiers pays africains à opérer une transition démocratique pacifique.
             </p>
           </div>
-          <Link href="/histoire">
-  <Button
-    className="mt-6 bg-[#8B4513] hover:bg-[#5C4033] text-white"
-  >
-    Lire l'article complet →
-  </Button>
-</Link>
+          <ArticleButton href="/histoire">
+            Lire l'article complet
+          </ArticleButton>
+
+          {/* <Link href="/histoire">
+            <Button
+              className="mt-6 bg-[#8B4513] hover:bg-[#5C4033] text-white"
+            >
+              Lire l'article complet →
+            </Button>
+          </Link> */}
         </div>
       </section>
 

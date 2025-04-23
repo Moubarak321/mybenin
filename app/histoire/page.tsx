@@ -2,6 +2,15 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Histoire complète du Bénin",
+  description: "Découvrez l'histoire riche et complexe du Bénin, des royaumes précoloniaux à la démocratie moderne",
+  openGraph: {
+    images: "/images/histoire-og.jpg",
+  },
+};
 
 export default function HistoryPage() {
   return (

@@ -20,6 +20,9 @@ const ethnicGroups = [
   { name: "Fon", image: "https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=800" },
   { name: "Yoruba", image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800" },
   { name: "Bariba", image: "https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=800" },
+  { name: "Dendi", image: "https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=800" },
+  { name: "Adja", image: "https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=800" },
+  { name: "Mahi", image: "https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=800" },
 ];
 
 const traditions = ["Vaudou", "Rites", "Contes", "Proverbes"];
@@ -27,8 +30,8 @@ const traditions = ["Vaudou", "Rites", "Contes", "Proverbes"];
 const sections = [
   { id: "ethnic-groups", title: "Ethnies" },
   { id: "traditions", title: "Traditions" },
-  { id: "gastronomy", title: "Gastronomie" },
-  { id: "crafts", title: "Artisanat" },
+  { id: "gastronomie", title: "Gastronomie" },
+  { id: "artisanat", title: "Artisanat" },
   { id: "festivals", title: "Festivals" },
 ];
 
@@ -108,10 +111,10 @@ export default function Navbar() {
 
             {/* Liens directs */}
             <Button asChild variant="ghost" className="text-[#5C4033] hover:text-[#8B4513]">
-              <Link href="/gastronomy">Gastronomie</Link>
+              <Link href="/gastronomie">Gastronomie</Link>
             </Button>
             <Button asChild variant="ghost" className="text-[#5C4033] hover:text-[#8B4513]">
-              <Link href="/crafts">Artisanat</Link>
+              <Link href="/artisanat">Artisanat</Link>
             </Button>
             <Button asChild variant="ghost" className="text-[#5C4033] hover:text-[#8B4513]">
               <Link href="/festivals">Festivals</Link>

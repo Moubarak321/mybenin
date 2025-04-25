@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@radix-ui/react-accordion";
 
 // Données statiques (à externaliser dans un fichier data.ts si nécessaire)
 const ethnicGroups = [
@@ -142,38 +143,82 @@ export default function Navbar() {
           </div>
 
           {/* Menu Mobile */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" className="text-[#5C4033]">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="bg-[#FDF6E3]">
-              <div className="flex flex-col space-y-4 mt-6">
-                {sections.map((section, index) => (
-                  <Button
-                    key={section.id}
-                    asChild
-                    variant="ghost"
-                    className="w-full justify-start text-[#5C4033] hover:text-[#8B4513]"
-                    onClick={() => setActiveSection(index)}
-                  >
-                    <Link href={`${section.id}`}>{section.title}</Link>
-                  </Button>
-                ))}
-                <Button 
-                  asChild
-                  variant="outline" 
-                  className="mt-8 text-[#5C4033] border-[#5C4033]"
+
+<Sheet>
+  <SheetTrigger asChild className="md:hidden">
+    <Button variant="ghost" size="icon" className="text-[#5C4033]">
+      <Menu className="h-6 w-6" />
+    </Button>
+  </SheetTrigger>
+  <SheetContent side="left" className="bg-[#FDF6E3]">
+    <div className="flex flex-col space-y-2 mt-6">
+      {/* Menu Ethnies mobile */}
+      <Accordion type="single" collapsible>
+        <AccordionItem value="ethnies">
+          <AccordionTrigger className="text-[#5C4033] hover:text-[#8B4513]">
+            Ethnies
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="flex flex-col space-y-2 pl-4 pt-2">
+              {ethnicGroups.map((group) => (
+                <Link 
+                  key={group.name} 
+                  href={`/ethnies/${group.name.toLowerCase()}`}
+                  className="text-[#5C4033] hover:text-[#8B4513] py-2"
                 >
-                  <Link href="/contribute">
-                    <PenSquare className="mr-2 h-4 w-4" /> 
-                    Contribuer
-                  </Link>
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+                  {group.name}
+                </Link>
+              ))}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* Menu Traditions mobile */}
+        <AccordionItem value="traditions">
+          <AccordionTrigger className="text-[#5C4033] hover:text-[#8B4513]">
+            Traditions
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="flex flex-col space-y-2 pl-4 pt-2">
+              {traditions.map((tradition) => (
+                <Link
+                  key={tradition}
+                  href={`/traditions/${tradition.toLowerCase()}`}
+                  className="text-[#5C4033] hover:text-[#8B4513] py-2"
+                >
+                  {tradition}
+                </Link>
+              ))}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      {/* Autres liens directs */}
+      {sections.slice(2).map((section) => (
+        <Link
+          key={section.id}
+          href={`/${section.id}`}
+          className="text-[#5C4033] hover:text-[#8B4513] py-2"
+        >
+          {section.title}
+        </Link>
+      ))}
+
+      {/* Bouton Contribuer */}
+      <Button 
+        asChild
+        variant="outline" 
+        className="mt-4 text-[#5C4033] border-[#5C4033] hover:bg-[#8B4513]/10"
+      >
+        <Link href="/contribute">
+          <PenSquare className="mr-2 h-4 w-4" /> 
+          Contribuer
+        </Link>
+      </Button>
+    </div>
+  </SheetContent>
+</Sheet>
         </div>
       </div>
     </nav>

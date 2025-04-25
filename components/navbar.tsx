@@ -158,7 +158,7 @@ export default function Navbar() {
                     className="w-full justify-start text-[#5C4033] hover:text-[#8B4513]"
                     onClick={() => setActiveSection(index)}
                   >
-                    <Link href={`#${section.id}`}>{section.title}</Link>
+                    <Link href={`${section.id}`}>{section.title}</Link>
                   </Button>
                 ))}
                 <Button 

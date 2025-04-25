@@ -64,7 +64,7 @@ const divinities = [
 
 export default function DivinitiesPage() {
   return (
-    <div className="bg-[#FAF7F0] min-h-screen py-12 px-4">
+    <div className="bg-[#FAF7F0] min-h-screen py-12 px-4 py-12">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -72,7 +72,7 @@ export default function DivinitiesPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl font-bold text-[#3A2D1E] mb-4">
+          <h1 className="text-4xl font-bold text-[#3A2D1E] mb-4 mt-12">
             Panthéon Vodoun
           </h1>
           <p className="text-xl text-[#8B5A2B] max-w-2xl mx-auto">

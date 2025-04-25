@@ -67,7 +67,7 @@ export default function RitesPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl font-bold text-[#5C4033] mb-4">
+          <h1 className="text-4xl font-bold text-[#5C4033] mb-4 mt-12">
             Cérémonies Vodoun
           </h1>
           <p className="text-xl text-[#8B4513] max-w-2xl mx-auto">

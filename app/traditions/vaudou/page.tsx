@@ -57,7 +57,7 @@ export default function VodounPage() {
       {/* Hero Section */}
       <div className="relative h-[60vh] overflow-hidden">
         <Image
-          src="/vodoun-hero.jpg"
+          src="https://static.lpnt.fr/images/2018/01/10/12777012lpaw-12805711-embed-libre-jpg_4903602.jpg"
           alt="Cérémonie Vodoun"
           fill
           className="object-cover"

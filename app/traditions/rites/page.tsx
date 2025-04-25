@@ -13,7 +13,7 @@ const rites = [
     icon: <Moon className="text-purple-600" />,
     tags: ["Protection", "Danse"],
     region: "Ouidah",
-    image: "/zangbeto.jpg"
+    image: "https://beninzangbeto.com/wp-content/uploads/2024/11/Benin-Zangbeto-festival.jpg"
   },
   {
     name: "Holi",
@@ -21,7 +21,7 @@ const rites = [
     icon: <Flame className="text-red-500" />,
     tags: ["Purification", "Feu"],
     region: "Abomey",
-    image: "/holi.jpg"
+    image: "https://beninzangbeto.com/wp-content/uploads/2024/11/Benin-Zangbeto-festival.jpg"
   },
   {
     name: "Dan Tohossou",
@@ -29,7 +29,7 @@ const rites = [
     icon: <Shield className="text-gold-500" />,
     tags: ["Ancêtres", "Royauté"],
     region: "Allada",
-    image: "/dan-tohossou.jpg"
+    image: "https://beninzangbeto.com/wp-content/uploads/2024/11/Benin-Zangbeto-festival.jpg"
   },
   {
     name: "Tchinckouin",
@@ -37,7 +37,7 @@ const rites = [
     icon: <Leaf className="text-green-500" />,
     tags: ["Médecine", "Nature"],
     region: "Savè",
-    image: "/tchinckouin.jpg"
+    image: "https://beninzangbeto.com/wp-content/uploads/2024/11/Benin-Zangbeto-festival.jpg"
   },
   {
     name: "Hounto",
@@ -45,7 +45,7 @@ const rites = [
     icon: <Drum className="text-orange-500" />,
     tags: ["Initiation", "Musique"],
     region: "Porto-Novo",
-    image: "/hounto.jpg"
+    image: "https://beninzangbeto.com/wp-content/uploads/2024/11/Benin-Zangbeto-festival.jpg"
   },
   {
     name: "Tohossou",
@@ -53,7 +53,7 @@ const rites = [
     icon: <Sun className="text-blue-500" />,
     tags: ["Divination", "Eau"],
     region: "Grand-Popo",
-    image: "/tohossou.jpg"
+    image: "https://beninzangbeto.com/wp-content/uploads/2024/11/Benin-Zangbeto-festival.jpg"
   }
 ];
 

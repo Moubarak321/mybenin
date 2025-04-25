@@ -13,7 +13,7 @@ const divinities = [
     power: "Contrôle les éléments",
     icon: <Zap className="text-yellow-500" />,
     color: "bg-yellow-50",
-    image: "/heviosso.jpg"
+    image: "https://beninwebtv.com/wp-content/uploads/2022/06/IMG_5334.jpg"
   },
   {
     name: "Mami Wata",
@@ -22,7 +22,7 @@ const divinities = [
     power: "Guérison mystique",
     icon: <Waves className="text-blue-500" />,
     color: "bg-blue-50",
-    image: "/mami-wata.jpg"
+    image: "https://beninwebtv.com/wp-content/uploads/2022/06/IMG_5334.jpg"
   },
   {
     name: "Sakpata",
@@ -31,7 +31,7 @@ const divinities = [
     power: "Protection contre les épidémies",
     icon: <Skull className="text-red-500" />,
     color: "bg-red-50",
-    image: "/sakpata.jpg"
+    image: "https://beninwebtv.com/wp-content/uploads/2022/06/IMG_5334.jpg"
   },
   {
     name: "Dan",
@@ -40,7 +40,7 @@ const divinities = [
     power: "Sagesse ancestrale",
     icon: <Droplet className="text-green-500" />,
     color: "bg-green-50",
-    image: "/dan.jpg"
+    image: "https://beninwebtv.com/wp-content/uploads/2022/06/IMG_5334.jpg"
   },
   {
     name: "Gou",
@@ -49,7 +49,7 @@ const divinities = [
     power: "Force invincible",
     icon: <Flame className="text-orange-500" />,
     color: "bg-orange-50",
-    image: "/gou.jpg"
+    image: "https://beninwebtv.com/wp-content/uploads/2022/06/IMG_5334.jpg"
   },
   {
     name: "Lègba",
@@ -58,7 +58,7 @@ const divinities = [
     power: "Intermédiaire divin",
     icon: <Leaf className="text-purple-500" />,
     color: "bg-purple-50",
-    image: "/legba.jpg"
+    image: "https://beninwebtv.com/wp-content/uploads/2022/06/IMG_5334.jpg"
   }
 ];
 

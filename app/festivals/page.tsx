@@ -103,7 +103,7 @@ export default function FestivalsPage() {
                     {festival.category}
                   </Badge>
                 </div>
-                
+
                 <CardHeader>
                   <CardTitle className="text-xl text-[#5C4033]">
                     {festival.name}
@@ -119,10 +119,10 @@ export default function FestivalsPage() {
                     </div>
                   </div>
                 </CardHeader>
-                
+
                 <CardContent>
                   <p className="text-[#5C4033] mb-4">{festival.description}</p>
-                  
+
                   {/* Ticket Availability */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
@@ -131,13 +131,13 @@ export default function FestivalsPage() {
                         {festival.ticketsLeft}/{festival.totalTickets}
                       </span>
                     </div>
-                    <Progress 
-                      value={(festival.ticketsLeft / festival.totalTickets) * 100} 
+                    <Progress
+                      value={(festival.ticketsLeft / festival.totalTickets) * 100}
                       className="h-2 bg-[#8B4513]/20 [&>div]:bg-[#5C4033]"
                     />
                   </div>
                 </CardContent>
-                
+
                 <CardFooter className="flex justify-between items-center">
                   <div>
                     <p className="text-lg font-bold text-[#5C4033]">

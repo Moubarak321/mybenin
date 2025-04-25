@@ -151,7 +151,7 @@ export default function Navbar() {
     </Button>
   </SheetTrigger>
   <SheetContent side="left" className="bg-[#FDF6E3]">
-    <div className="flex flex-col space-y-2 mt-6">
+    <div className="flex flex-col space-y-2 mt-6 ">
       {/* Menu Ethnies mobile */}
       <Accordion type="single" collapsible>
         <AccordionItem value="ethnies">
@@ -175,11 +175,11 @@ export default function Navbar() {
 
         {/* Menu Traditions mobile */}
         <AccordionItem value="traditions">
-          <AccordionTrigger className="text-[#5C4033] hover:text-[#8B4513]">
+          <AccordionTrigger className="text-[#5C4033] hover:text-[#8B4513] mt-6">
             Traditions
           </AccordionTrigger>
           <AccordionContent>
-            <div className="flex flex-col space-y-2 pl-4 pt-2">
+            <div className="flex flex-col space-y-2 pl-4 pt-2 ">
               {traditions.map((tradition) => (
                 <Link
                   key={tradition}

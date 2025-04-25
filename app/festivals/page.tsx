@@ -1,325 +1,176 @@
-
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Bell, ChevronDown, Globe, Menu, PenSquare, MapPin, Users, Crown, Music2, Utensils, Palette } from "lucide-react";
+import { Calendar, MapPin, Ticket, Clock, Users } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import { Progress } from "@/components/ui/progress";
 
-// ... (previous imports and constants remain the same until ethnicGroups)
-
-const fonEthnicGroup = {
-  overview: {
-    population: "Environ 3,5 millions",
-    location: "Sud du Bénin, principalement dans les départements du Zou, de l'Atlantique et du Littoral",
-    language: "Fongbe (langue Gbe)",
-    religion: "Vodun traditionnel, Christianisme, Islam",
+const festivals = [
+  {
+    id: 1,
+    name: "Fête du Vodoun",
+    date: "10 Janvier 2024",
+    location: "Ouidah",
+    description: "Célébration annuelle des traditions vodoun avec cérémonies et danses sacrées",
+    image: "https://mediapartbenin.com/upload/images/0111021001698841734.jpeg",
+    price: 5000,
+    currency: "FCFA",
+    ticketsLeft: 15,
+    totalTickets: 100,
+    category: "Religieux"
   },
-  history: [
-    {
-      period: "XIIe siècle",
-      event: "Migration vers la région d'Allada",
-    },
-    {
-      period: "XVIIe siècle",
-      event: "Établissement du Royaume d'Abomey",
-    },
-    {
-      period: "XVIIIe-XIXe siècles",
-      event: "Apogée du Royaume du Dahomey",
-    },
-  ],
-  traditions: [
-    {
-      name: "Vodun",
-      description: "Religion traditionnelle avec des cérémonies et rituels complexes",
-    },
-    {
-      name: "Fa",
-      description: "Système de divination traditionnel",
-    },
-    {
-      name: "Zangbeto",
-      description: "Gardiens traditionnels de la nuit",
-    },
-  ],
-  culture: {
-    music: [
-      "Tambours parlants",
-      "Chants traditionnels",
-      "Musique de cour royale",
-    ],
-    dance: [
-      "Agbadja",
-      "Adjogan",
-      "Zinli",
-    ],
-    crafts: [
-      "Tissage",
-      "Sculpture sur bois",
-      "Appliqués de Abomey",
-    ],
+  {
+    id: 2,
+    name: "Festival International de Porto-Novo",
+    date: "15-20 Mars 2024",
+    location: "Porto-Novo",
+    description: "Rencontre des arts et cultures africaines contemporaines",
+    image: "https://mediapartbenin.com/upload/images/0111021001698841734.jpeg",
+    price: 10000,
+    currency: "FCFA",
+    ticketsLeft: 42,
+    totalTickets: 200,
+    category: "Culturel"
   },
-  cuisine: [
-    {
-      name: "Amala",
-      description: "Pâte de manioc fermentée",
-    },
-    {
-      name: "Sauce Fon",
-      description: "Préparation à base de légumes et viande",
-    },
-    {
-      name: "Akassa",
-      description: "Pâte de maïs fermentée",
-    },
-  ],
-};
+  {
+    id: 3,
+    name: "Gani Festival",
+    date: "5 Avril 2024",
+    location: "Kandi",
+    description: "Célébration traditionnelle Bariba avec courses de chevaux et danses masquées",
+    image: "https://mediapartbenin.com/upload/images/0111021001698841734.jpeg",
+    price: 3000,
+    currency: "FCFA",
+    ticketsLeft: 78,
+    totalTickets: 150,
+    category: "Traditionnel"
+  }
+];
 
-// ... (previous constants remain the same)
-
-export default function Home() {
-  // ... (previous state declarations and useEffect remain the same)
-
+export default function FestivalsPage() {
   return (
-    <div className="min-h-screen bg-[#FDF6E3] overflow-x-hidden">
-      {/* Navigation */}
-      {/* ... (previous navigation code remains the same) */}
+    <div className="bg-[#FFF9F0] min-h-screen py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl font-bold text-[#5C4033] mb-4 mt-12">
+            Festivals du Bénin
+          </h1>
+          <p className="text-xl text-[#8B4513] max-w-2xl mx-auto">
+            Vivez l'expérience unique des célébrations culturelles béninoises
+          </p>
+        </motion.div>
 
-      {/* Hero Carousel */}
-      {/* ... (previous carousel code remains the same) */}
+        {/* Filters */}
+        <div className="flex flex-wrap gap-3 mb-8 justify-center">
+          {["Tous", "Religieux", "Culturel", "Traditionnel"].map((filter) => (
+            <Badge
+              key={filter}
+              variant={filter === "Tous" ? "default" : "outline"}
+              className="px-4 py-2 cursor-pointer hover:bg-[#5C4033] hover:text-white"
+            >
+              {filter}
+            </Badge>
+          ))}
+        </div>
 
-      {/* History Section with Coat of Arms */}
-      {/* ... (previous history section remains the same) */}
-
-      {/* Fon Ethnic Group Overview */}
-      <section className="py-20 px-4 bg-[#FDF6E3]">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-[#5C4033] mb-4">Le Peuple Baatombu</h2>
-            <p className="text-lg text-[#8B4513]">Découvrez la richesse culturelle du plus grand groupe ethnique du Bénin</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {/* Festivals Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {festivals.map((festival) => (
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              key={festival.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=2070"
-                alt="Peuple Fon"
-                className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
-              />
-            </motion.div>
-            <div className="grid grid-cols-2 gap-4">
-              {Object.entries(fonEthnicGroup.overview).map(([key, value], index) => (
-                <motion.div
-                  key={key}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                    <CardHeader>
-                      <CardTitle className="text-[#5C4033] capitalize">{key}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-[#8B4513]">{value}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          <Tabs defaultValue="history" className="w-full">
-            <TabsList className="w-full justify-start bg-[#8B4513]/10 mb-8">
-              <TabsTrigger value="history" className="text-[#5C4033]">Histoire</TabsTrigger>
-              <TabsTrigger value="traditions" className="text-[#5C4033]">Traditions</TabsTrigger>
-              <TabsTrigger value="culture" className="text-[#5C4033]">Culture</TabsTrigger>
-              <TabsTrigger value="cuisine" className="text-[#5C4033]">Cuisine</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="history">
-              <div className="grid gap-8">
-                {fonEthnicGroup.history.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="flex-shrink-0 w-32 font-bold text-[#5C4033]">{item.period}</div>
-                    <div className="flex-grow">
-                      <Card className="bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                        <CardContent className="pt-6">
-                          <p className="text-[#8B4513]">{item.event}</p>
-                        </CardContent>
-                      </Card>
+              <Card className="h-full overflow-hidden border-[#8B4513]/20 hover:shadow-lg transition-shadow">
+                <div className="relative h-48">
+                  <Image
+                    src={festival.image}
+                    alt={festival.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <Badge className="absolute top-2 right-2 bg-[#5C4033]">
+                    {festival.category}
+                  </Badge>
+                </div>
+                
+                <CardHeader>
+                  <CardTitle className="text-xl text-[#5C4033]">
+                    {festival.name}
+                  </CardTitle>
+                  <div className="flex flex-wrap gap-4">
+                    <div className="flex items-center gap-2 text-sm text-[#8B4513]">
+                      <Calendar className="h-4 w-4" />
+                      {festival.date}
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="traditions">
-              <div className="grid md:grid-cols-3 gap-8">
-                {fonEthnicGroup.traditions.map((tradition, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                      <CardHeader>
-                        <CardTitle className="text-[#5C4033]">{tradition.name}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-[#8B4513]">{tradition.description}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="culture">
-              <div className="grid md:grid-cols-3 gap-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                    <CardHeader>
-                      <CardTitle className="text-[#5C4033] flex items-center gap-2">
-                        <Music2 className="h-5 w-5" /> Musique
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="list-disc list-inside text-[#8B4513] space-y-2">
-                        {fonEthnicGroup.culture.music.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                    <CardHeader>
-                      <CardTitle className="text-[#5C4033]">Danse</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="list-disc list-inside text-[#8B4513] space-y-2">
-                        {fonEthnicGroup.culture.dance.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                    <CardHeader>
-                      <CardTitle className="text-[#5C4033] flex items-center gap-2">
-                        <Palette className="h-5 w-5" /> Artisanat
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="list-disc list-inside text-[#8B4513] space-y-2">
-                        {fonEthnicGroup.culture.crafts.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="cuisine">
-              <div className="grid md:grid-cols-3 gap-8">
-                {fonEthnicGroup.cuisine.map((dish, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                      <CardHeader>
-                        <CardTitle className="text-[#5C4033] flex items-center gap-2">
-                          <Utensils className="h-5 w-5" /> {dish.name}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-[#8B4513]">{dish.description}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+                    <div className="flex items-center gap-2 text-sm text-[#8B4513]">
+                      <MapPin className="h-4 w-4" />
+                      {festival.location}
+                    </div>
+                  </div>
+                </CardHeader>
+                
+                <CardContent>
+                  <p className="text-[#5C4033] mb-4">{festival.description}</p>
+                  
+                  {/* Ticket Availability */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-[#5C4033]">Billets disponibles</span>
+                      <span className="font-medium">
+                        {festival.ticketsLeft}/{festival.totalTickets}
+                      </span>
+                    </div>
+                    <Progress 
+                      value={(festival.ticketsLeft / festival.totalTickets) * 100} 
+                      className="h-2 bg-[#8B4513]/20 [&>div]:bg-[#5C4033]"
+                    />
+                  </div>
+                </CardContent>
+                
+                <CardFooter className="flex justify-between items-center">
+                  <div>
+                    <p className="text-lg font-bold text-[#5C4033]">
+                      {festival.price.toLocaleString()} {festival.currency}
+                    </p>
+                    {festival.price > 5000 && (
+                      <p className="text-xs text-green-600">VIP disponible</p>
+                    )}
+                  </div>
+                  <Button className="gap-2 bg-[#8B4513] hover:bg-[#5C4033]">
+                    <Ticket className="h-4 w-4" />
+                    Acheter
+                  </Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
         </div>
-      </section>
 
-      {/* Content Sections */}
-      {/* ... (previous sections code remains the same) */}
-
-      {/* Footer */}
-      {/* ... (previous footer code remains the same) */}
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="mt-16 text-center"
+        >
+          <h2 className="text-2xl font-bold text-[#5C4033] mb-4">
+            Vous organisez un festival ?
+          </h2>
+          <Button variant="outline" className="border-[#5C4033] text-[#5C4033]">
+            Proposer un événement
+          </Button>
+        </motion.div>
+      </div>
     </div>
   );
 }

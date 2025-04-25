@@ -1,325 +1,142 @@
-
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Bell, ChevronDown, Globe, Menu, PenSquare, MapPin, Users, Crown, Music2, Utensils, Palette } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
+import { Drum, Moon, Sun, Flame, Shield, Leaf } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
-// ... (previous imports and constants remain the same until ethnicGroups)
-
-const fonEthnicGroup = {
-  overview: {
-    population: "Environ 3,5 millions",
-    location: "Sud du Bénin, principalement dans les départements du Zou, de l'Atlantique et du Littoral",
-    language: "Fongbe (langue Gbe)",
-    religion: "Vodun traditionnel, Christianisme, Islam",
+const rites = [
+  {
+    name: "Zangbeto",
+    description: "Cérémonie des gardiens de la nuit",
+    icon: <Moon className="text-purple-600" />,
+    tags: ["Protection", "Danse"],
+    region: "Ouidah",
+    image: "/zangbeto.jpg"
   },
-  history: [
-    {
-      period: "XIIe siècle",
-      event: "Migration vers la région d'Allada",
-    },
-    {
-      period: "XVIIe siècle",
-      event: "Établissement du Royaume d'Abomey",
-    },
-    {
-      period: "XVIIIe-XIXe siècles",
-      event: "Apogée du Royaume du Dahomey",
-    },
-  ],
-  traditions: [
-    {
-      name: "Vodun",
-      description: "Religion traditionnelle avec des cérémonies et rituels complexes",
-    },
-    {
-      name: "Fa",
-      description: "Système de divination traditionnel",
-    },
-    {
-      name: "Zangbeto",
-      description: "Gardiens traditionnels de la nuit",
-    },
-  ],
-  culture: {
-    music: [
-      "Tambours parlants",
-      "Chants traditionnels",
-      "Musique de cour royale",
-    ],
-    dance: [
-      "Agbadja",
-      "Adjogan",
-      "Zinli",
-    ],
-    crafts: [
-      "Tissage",
-      "Sculpture sur bois",
-      "Appliqués de Abomey",
-    ],
+  {
+    name: "Holi",
+    description: "Rituel de purification par le feu",
+    icon: <Flame className="text-red-500" />,
+    tags: ["Purification", "Feu"],
+    region: "Abomey",
+    image: "/holi.jpg"
   },
-  cuisine: [
-    {
-      name: "Amala",
-      description: "Pâte de manioc fermentée",
-    },
-    {
-      name: "Sauce Fon",
-      description: "Préparation à base de légumes et viande",
-    },
-    {
-      name: "Akassa",
-      description: "Pâte de maïs fermentée",
-    },
-  ],
-};
+  {
+    name: "Dan Tohossou",
+    description: "Culte des ancêtres royaux",
+    icon: <Shield className="text-gold-500" />,
+    tags: ["Ancêtres", "Royauté"],
+    region: "Allada",
+    image: "/dan-tohossou.jpg"
+  },
+  {
+    name: "Tchinckouin",
+    description: "Rituel de guérison par les plantes",
+    icon: <Leaf className="text-green-500" />,
+    tags: ["Médecine", "Nature"],
+    region: "Savè",
+    image: "/tchinckouin.jpg"
+  },
+  {
+    name: "Hounto",
+    description: "Initiation des adeptes",
+    icon: <Drum className="text-orange-500" />,
+    tags: ["Initiation", "Musique"],
+    region: "Porto-Novo",
+    image: "/hounto.jpg"
+  },
+  {
+    name: "Tohossou",
+    description: "Communication avec les divinités",
+    icon: <Sun className="text-blue-500" />,
+    tags: ["Divination", "Eau"],
+    region: "Grand-Popo",
+    image: "/tohossou.jpg"
+  }
+];
 
-// ... (previous constants remain the same)
-
-export default function Home() {
-  // ... (previous state declarations and useEffect remain the same)
-
+export default function RitesPage() {
   return (
-    <div className="min-h-screen bg-[#FDF6E3] overflow-x-hidden">
-      {/* Navigation */}
-      {/* ... (previous navigation code remains the same) */}
+    <div className="bg-[#FAF5E9] min-h-screen py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl font-bold text-[#5C4033] mb-4">
+            Cérémonies Vodoun
+          </h1>
+          <p className="text-xl text-[#8B4513] max-w-2xl mx-auto">
+            Découvrez les rites sacrés qui rythment la vie spirituelle du Bénin
+          </p>
+        </motion.div>
 
-      {/* Hero Carousel */}
-      {/* ... (previous carousel code remains the same) */}
+        {/* Filters */}
+        <div className="flex flex-wrap gap-4 mb-12 justify-center">
+          {["Toutes", "Initiation", "Purification", "Danse", "Guérison"].map((filter) => (
+            <Badge
+              key={filter}
+              variant="outline"
+              className="px-4 py-2 cursor-pointer hover:bg-[#5C4033] hover:text-white"
+            >
+              {filter}
+            </Badge>
+          ))}
+        </div>
 
-      {/* History Section with Coat of Arms */}
-      {/* ... (previous history section remains the same) */}
-
-      {/* Fon Ethnic Group Overview */}
-      <section className="py-20 px-4 bg-[#FDF6E3]">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-[#5C4033] mb-4">Le Peuple Baatombu</h2>
-            <p className="text-lg text-[#8B4513]">Découvrez la richesse culturelle du plus grand groupe ethnique du Bénin</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {/* Ceremonies Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {rites.map((ceremony, index) => (
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              key={ceremony.name}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=2070"
-                alt="Peuple Fon"
-                className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
-              />
-            </motion.div>
-            <div className="grid grid-cols-2 gap-4">
-              {Object.entries(fonEthnicGroup.overview).map(([key, value], index) => (
-                <motion.div
-                  key={key}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                    <CardHeader>
-                      <CardTitle className="text-[#5C4033] capitalize">{key}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-[#8B4513]">{value}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          <Tabs defaultValue="history" className="w-full">
-            <TabsList className="w-full justify-start bg-[#8B4513]/10 mb-8">
-              <TabsTrigger value="history" className="text-[#5C4033]">Histoire</TabsTrigger>
-              <TabsTrigger value="traditions" className="text-[#5C4033]">Traditions</TabsTrigger>
-              <TabsTrigger value="culture" className="text-[#5C4033]">Culture</TabsTrigger>
-              <TabsTrigger value="cuisine" className="text-[#5C4033]">Cuisine</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="history">
-              <div className="grid gap-8">
-                {fonEthnicGroup.history.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="flex-shrink-0 w-32 font-bold text-[#5C4033]">{item.period}</div>
-                    <div className="flex-grow">
-                      <Card className="bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                        <CardContent className="pt-6">
-                          <p className="text-[#8B4513]">{item.event}</p>
-                        </CardContent>
-                      </Card>
+              <Card className="h-full border-[#8B4513]/20 overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="relative h-48">
+                  <Image
+                    src={ceremony.image}
+                    alt={ceremony.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-[#5C4033]/10">
+                      {ceremony.icon}
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="traditions">
-              <div className="grid md:grid-cols-3 gap-8">
-                {fonEthnicGroup.traditions.map((tradition, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                      <CardHeader>
-                        <CardTitle className="text-[#5C4033]">{tradition.name}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-[#8B4513]">{tradition.description}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="culture">
-              <div className="grid md:grid-cols-3 gap-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                    <CardHeader>
-                      <CardTitle className="text-[#5C4033] flex items-center gap-2">
-                        <Music2 className="h-5 w-5" /> Musique
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="list-disc list-inside text-[#8B4513] space-y-2">
-                        {fonEthnicGroup.culture.music.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                    <CardHeader>
-                      <CardTitle className="text-[#5C4033]">Danse</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="list-disc list-inside text-[#8B4513] space-y-2">
-                        {fonEthnicGroup.culture.dance.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                    <CardHeader>
-                      <CardTitle className="text-[#5C4033] flex items-center gap-2">
-                        <Palette className="h-5 w-5" /> Artisanat
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="list-disc list-inside text-[#8B4513] space-y-2">
-                        {fonEthnicGroup.culture.crafts.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="cuisine">
-              <div className="grid md:grid-cols-3 gap-8">
-                {fonEthnicGroup.cuisine.map((dish, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
-                      <CardHeader>
-                        <CardTitle className="text-[#5C4033] flex items-center gap-2">
-                          <Utensils className="h-5 w-5" /> {dish.name}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-[#8B4513]">{dish.description}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+                    <CardTitle className="text-[#5C4033]">
+                      {ceremony.name}
+                    </CardTitle>
+                  </div>
+                  <p className="text-sm text-[#8B4513]">{ceremony.region}</p>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-[#5C4033] mb-4">{ceremony.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {ceremony.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="secondary"
+                        className="bg-[#8B4513]/10 text-[#5C4033]"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
         </div>
-      </section>
-
-      {/* Content Sections */}
-      {/* ... (previous sections code remains the same) */}
-
-      {/* Footer */}
-      {/* ... (previous footer code remains the same) */}
+      </div>
     </div>
   );
 }

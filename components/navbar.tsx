@@ -25,7 +25,7 @@ const ethnicGroups = [
   { name: "Mahi", image: "https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=800" },
 ];
 
-const traditions = ["Vaudou", "Rites", "Contes", "Proverbes"];
+const traditions = ["Vaudou", "Divinités", "Rites"];
 
 const sections = [
   { id: "ethnic-groups", title: "Ethnies" },

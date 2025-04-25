@@ -106,14 +106,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#FDF6E3] overflow-x-hidden">
-      {/* Navigation */}
-      {/* ... (previous navigation code remains the same) */}
-
-      {/* Hero Carousel */}
-      {/* ... (previous carousel code remains the same) */}
-
-      {/* History Section with Coat of Arms */}
-      {/* ... (previous history section remains the same) */}
+      
 
       {/* Fon Ethnic Group Overview */}
       <section className="py-20 px-4 bg-[#FDF6E3]">

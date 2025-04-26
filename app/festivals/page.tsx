@@ -29,7 +29,7 @@ const festivals = [
     location: "Porto-Novo",
     description: "Rencontre des arts et cultures africaines contemporaines",
     image: "https://mediapartbenin.com/upload/images/0111021001698841734.jpeg",
-    price: 10000,
+    price: 15000,
     currency: "FCFA",
     ticketsLeft: 42,
     totalTickets: 200,
@@ -80,6 +80,7 @@ export default function FestivalsPage() {
             </Badge>
           ))}
         </div>
+
 
         {/* Festivals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

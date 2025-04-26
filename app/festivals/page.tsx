@@ -132,10 +132,15 @@ export default function FestivalsPage() {
                         {festival.ticketsLeft}/{festival.totalTickets}
                       </span>
                     </div>
-                    <Progress
-                      value={(festival.ticketsLeft / festival.totalTickets) * 100}
-                      className="h-2 bg-[#8B4513]/20 [&>div]:bg-[#5C4033]"
-                    />
+{/* <Progress
+  value={(festival.ticketsLeft / festival.totalTickets) * 100}
+  className="h-2 bg-[#8B4513]/20 [&>div]:bg-[#5C4033]"
+/> */}<div className="w-full bg-[#8B4513]/20 h-2 rounded-full">
+  <div 
+    className="bg-[#5C4033] h-full rounded-full" 
+    style={{ width: `${(festival.ticketsLeft / festival.totalTickets) * 100}%` }}
+  />
+</div>
                   </div>
                 </CardContent>
 

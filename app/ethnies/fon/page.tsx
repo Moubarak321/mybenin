@@ -1,13 +1,17 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Bell, ChevronDown, Globe, Menu, PenSquare, MapPin, Users, Crown, Music2, Utensils, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+
+import { PlayCircle, Headphones, Pause, Volume2 } from "lucide-react";
+import ReactPlayer from 'react-player';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -103,6 +107,19 @@ const fonEthnicGroup = {
 
 export default function Home() {
   // ... (previous state declarations and useEffect remain the same)
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState<string>("");
+  
+  function toggleAudio(audioSrc: string): void {
+    if (currentAudio === audioSrc) {
+      setIsPlaying(!isPlaying);
+    } else {
+      setCurrentAudio(audioSrc);
+      setIsPlaying(true);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[#FDF6E3] overflow-x-hidden">
@@ -114,6 +131,13 @@ export default function Home() {
 
       {/* History Section with Coat of Arms */}
       {/* ... (previous history section remains the same) */}
+      <audio 
+      ref={audioRef} 
+      onEnded={() => {
+        setIsPlaying(false);
+        setCurrentAudio('');
+      }}
+    />
 
       {/* Fon Ethnic Group Overview */}
       <section className="py-20 px-4 bg-[#FDF6E3]">
@@ -172,7 +196,7 @@ export default function Home() {
               <TabsTrigger value="cuisine" className="text-[#5C4033]">Cuisine</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="history">
+            {/* <TabsContent value="history">
               <div className="grid gap-8">
                 {fonEthnicGroup.history.map((item, index) => (
                   <motion.div
@@ -194,9 +218,71 @@ export default function Home() {
                   </motion.div>
                 ))}
               </div>
-            </TabsContent>
+            </TabsContent> */}
+            <TabsContent value="history">
+  <div className="grid gap-8">
+    {fonEthnicGroup.history.map((item, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        className="flex items-start gap-4"
+      >
+        <div className="flex-shrink-0 w-32 font-bold text-[#5C4033]">{item.period}</div>
+        <div className="flex-grow space-y-4">
+          <Card className="bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
+            <CardContent className="pt-6">
+              <p className="text-[#8B4513]">{item.event}</p>
+              
+              {/* Ajout des contrôles média */}
+              <div className="flex gap-4 mt-4">
+                {/* Bouton Audio */}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2 text-[#5C4033] border-[#8B4513]"
+                  onClick={() => toggleAudio(`/audio/history-${index}.mp3`)}
+                >
+                  {currentAudio === `/audio/history-${index}.mp3` && isPlaying ? (
+                    <Pause className="h-4 w-4" />
+                  ) : (
+                    <Headphones className="h-4 w-4" />
+                  )}
+                  Écouter
+                </Button>
+                
+                {/* Bouton Vidéo */}
+                {index === 0 && ( // Exemple: seulement pour le premier élément
+                  <ReactPlayer
+                    url="/videos/history-dahomey.mp4"
+                    width="100%"
+                    height="auto"
+                    controls
+                    light={true}
+                    playIcon={
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex items-center gap-2 text-[#5C4033] border-[#8B4513]"
+                      >
+                        <PlayCircle className="h-4 w-4" />
+                        Regarder
+                      </Button>
+                    }
+                  />
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</TabsContent>
 
-            <TabsContent value="traditions">
+            {/* <TabsContent value="traditions">
               <div className="grid md:grid-cols-3 gap-8">
                 {fonEthnicGroup.traditions.map((tradition, index) => (
                   <motion.div
@@ -217,7 +303,64 @@ export default function Home() {
                   </motion.div>
                 ))}
               </div>
-            </TabsContent>
+            </TabsContent> */}
+            <TabsContent value="traditions">
+  <div className="grid md:grid-cols-3 gap-8">
+    {fonEthnicGroup.traditions.map((tradition, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: index * 0.1 }}
+        viewport={{ once: true }}
+      >
+        <Card className="h-full bg-white/80 backdrop-blur-sm border-[#8B4513]/20">
+          <CardHeader>
+            <CardTitle className="text-[#5C4033]">{tradition.name}</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-[#8B4513]">{tradition.description}</p>
+            
+            {/* Contrôles média */}
+            <div className="flex gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-1 text-[#5C4033] border-[#8B4513]"
+                onClick={() => toggleAudio(`/audio/tradition-${index}.mp3`)}
+              >
+                {currentAudio === `/audio/tradition-${index}.mp3` && isPlaying ? (
+                  <Pause className="h-4 w-4" />
+                ) : (
+                  <Volume2 className="h-4 w-4" />
+                )}
+                Audio
+              </Button>
+              
+              <ReactPlayer
+                url={`/videos/tradition-${index}.mp4`}
+                width="100%"
+                height="auto"
+                controls
+                light={true}
+                playIcon={
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-1 text-[#5C4033] border-[#8B4513]"
+                  >
+                    <PlayCircle className="h-4 w-4" />
+                    Vidéo
+                  </Button>
+                }
+              />
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    ))}
+  </div>
+</TabsContent>
 
             <TabsContent value="culture">
               <div className="grid md:grid-cols-3 gap-8">

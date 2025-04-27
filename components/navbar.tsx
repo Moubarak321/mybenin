@@ -34,6 +34,7 @@ const sections = [
   { id: "gastronomie", title: "Gastronomie" },
   { id: "artisanat", title: "Artisanat" },
   { id: "festivals", title: "Festivals" },
+  { id: "tourisme", title: "Tourisme" },
 ];
 
 export default function Navbar() {
@@ -119,6 +120,9 @@ export default function Navbar() {
             </Button>
             <Button asChild variant="ghost" className="text-[#5C4033] hover:text-[#8B4513]">
               <Link href="/festivals">Festivals</Link>
+            </Button>
+            <Button asChild variant="ghost" className="text-[#5C4033] hover:text-[#8B4513]">
+              <Link href="/tourisme">Tourisme</Link>
             </Button>
 
             {/* CTA */}

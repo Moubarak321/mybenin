@@ -86,8 +86,8 @@ export default function HeroCarousel() {
   return (
     <section className="relative overflow-hidden w-full h-[80vh]">
       {/* Conteneur principal */}
-      <div className="embla h-full" ref={emblaRef}>
-        <div className="embla__container flex h-full">
+      <div className="embla h-full " ref={emblaRef}>
+        <div className="embla__container flex h-full ">
           {CAROUSEL_IMAGES.map((image, index) => (
             <div 
               key={index} 

@@ -5,6 +5,7 @@ import { Drum, Moon, Sun, Flame, Shield, Leaf } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 
 const rites = [
   {
@@ -89,53 +90,58 @@ export default function RitesPage() {
         </div>
 
         {/* Ceremonies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {rites.map((ceremony, index) => (
-            <motion.div
-              key={ceremony.name}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="h-full border-[#8B4513]/20 overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative h-48">
-                  <Image
-                    src={ceremony.image}
-                    alt={ceremony.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-full bg-[#5C4033]/10">
-                      {ceremony.icon}
-                    </div>
-                    <CardTitle className="text-[#5C4033]">
-                      {ceremony.name}
-                    </CardTitle>
-                  </div>
-                  <p className="text-sm text-[#8B4513]">{ceremony.region}</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-[#5C4033] mb-4">{ceremony.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {ceremony.tags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="secondary"
-                        className="bg-[#8B4513]/10 text-[#5C4033]"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+        
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {rites.map((ceremony, index) => (
+    <motion.div
+      key={ceremony.name}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.1 }}
+      viewport={{ once: true }}
+    >
+      <Link href={`/traditions/rites/detailrite`}>
+        <Card className="h-full border-[#8B4513]/20 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+          <div className="relative h-48">
+            <Image
+              src={ceremony.image}
+              alt={ceremony.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-full bg-[#5C4033]/10">
+                {ceremony.icon}
+              </div>
+              <CardTitle className="text-[#5C4033]">
+                {ceremony.name}
+              </CardTitle>
+            </div>
+            <p className="text-sm text-[#8B4513]">{ceremony.region}</p>
+          </CardHeader>
+          <CardContent>
+            <p className="text-[#5C4033] mb-4">{ceremony.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {ceremony.tags.map((tag) => (
+                <Badge
+                  key={tag}
+                  variant="secondary"
+                  className="bg-[#8B4513]/10 text-[#5C4033]"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </Link>
+    </motion.div>
+  ))}
+</div>
+
       </div>
     </div>
   );

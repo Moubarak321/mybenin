@@ -548,7 +548,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 className="bg-[#FEF5E7] p-6 rounded-xl shadow-md text-center"
               >
-                <img src={`/assets/nft-${index + 1}.png`} alt={item} className="w-full h-48 object-cover rounded-lg mb-4" />
+                <img src={`https://jeanjacquesmandel.com/wp-content/uploads/2020/05/GUELEDE-BENIN-HD-9333.jpg`} alt={item} className="w-full h-60 object-cover rounded-lg mb-4" />
                 <h3 className="text-xl font-semibold text-[#2C3E50]">{item}</h3>
                 <p className="text-[#7F8C8D] mt-2">NFT exclusif - édition limitée</p>
               </motion.div>

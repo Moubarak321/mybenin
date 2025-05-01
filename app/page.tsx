@@ -470,7 +470,7 @@ export default function Home() {
     },
     {
       title: "Spiritualité",
-      description: "Découverte du Vodun et rites sacrés",
+      description: "Le Vodun et ses rites sacrés",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2FH9I9O-YKT7K1F4z-PPcqJ9pNYxMHyyWQ&s"
     },
     {

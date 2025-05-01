@@ -525,61 +525,61 @@ export default function Home() {
       </section>
 
       {/* Caroussel sous header */}
-      
+
       <section className="mb-16">
-  <motion.div
-    className="absolute -bottom-25 left-0 right-0 z-30"
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: -80 }}
-    transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-  >
-    <div className="max-w-6xl mx-auto px-4 relative"> {/* Ajout de relative pour positionner les boutons */}
-      <Carousel className="w-full relative">
-        <CarouselContent className="-ml-1">
-          {popularThemes.map((theme, index) => (
-            <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4] mt-4">
-              <motion.div
-                whileHover={{
-                  scale: 1.05,
-                  y: -5,
-                  boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
-                }}
-                className="bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
-              >
-                <div className="relative overflow-hidden" style={{ height: "200px" }}>
-                  <img
-                    src={theme.image}
-                    alt={theme.title}
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-4 bg-gradient-to-t from-black/80 to-transparent absolute bottom-0 w-full">
-                  <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
-                  <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
-                </div>
-              </motion.div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        
-        {/* Boutons de navigation */}
-        <CarouselPrevious 
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
-          variant="ghost"
-        />
-        <CarouselNext 
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
-          variant="ghost"
-        />
-      </Carousel>
-    </div>
-  </motion.div>
-</section>
+        <motion.div
+          className="absolute -bottom-25 left-0 right-0 z-30"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: -80 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+        >
+          <div className="max-w-6xl mx-auto px-4 relative"> {/* Ajout de relative pour positionner les boutons */}
+            <Carousel className="w-full relative">
+              <CarouselContent className="-ml-1">
+                {popularThemes.map((theme, index) => (
+                  <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4] mt-4">
+                    <motion.div
+                      whileHover={{
+                        scale: 1.05,
+                        y: -5,
+                        boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
+                      }}
+                      className="bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
+                    >
+                      <div className="relative overflow-hidden" style={{ height: "200px" }}>
+                        <img
+                          src={theme.image}
+                          alt={theme.title}
+                          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="p-4 bg-gradient-to-t from-black/70 to-transparent absolute bottom-0 w-full">
+                        <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
+                        <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
+                      </div>
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              {/* Boutons de navigation */}
+              <CarouselPrevious
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+                variant="ghost"
+              />
+              <CarouselNext
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+                variant="ghost"
+              />
+            </Carousel>
+          </div>
+        </motion.div>
+      </section>
 
 
       {/* section engagement culturel */}
-      
+
       <div className="relative z-20 pt-[120px] md:pt-[150px]">
         <section className="py-16 px-4 bg-[#FEF5E7]">
           <div className="max-w-6xl mx-auto">
@@ -637,7 +637,7 @@ export default function Home() {
         <section className="py-20 px-4 bg-[#2C3E50] text-white text-center ">
           <div className="max-w-3xl mx-auto">
             <motion.h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Crée ta propre <span className="text-[#E67E22]">légende</span>
+              Crée ta propre <span className="text-[#E67E22]">histoire</span>
             </motion.h2>
             <p className="text-xl text-[#BDC3C7] mb-8">
               Entrez votre nom et votre origine pour générer une histoire inspirée des épopées béninoises
@@ -650,37 +650,95 @@ export default function Home() {
 
       </div>
 
-
-      {/* Nouvelle section : Objets culturels à collectionner */}
-      <section className="py-20 px-4 bg-white text-center">
+      {/* Section Circuits Touristiques */}
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
           >
-            Collectionnez des <span className="text-[#E67E22]">trésors numériques</span>
-          </motion.h2>
-          <p className="text-xl text-[#7F8C8D] mb-12">
-            Découvrez des artefacts culturels rares, transformés en NFT à collectionner ou à offrir.
-          </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-4">
+              Nos Circuits Exclusifs
+            </h2>
+            <p className="text-xl text-[#7F8C8D] max-w-2xl mx-auto">
+              Découvrez le Bénin à travers des expériences authentiques sélectionnées par nos guides partenaires
+            </p>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {["Masque royal", "Tissu Kente", "Tambour Vodun"].map((item, index) => (
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                title: "Anciens Royaumes et Chefferies",
+                type: "CULTURE",
+                duration: "14 jours",
+                price: "1500€",
+                image: "https://anpt.bj/upload/images/albums/935140769223001657018726.jpg" // Remplacez par vos URLs
+              },
+              {
+                title: "La Route des Émotions",
+                type: "MINORITÉ ETHNIQUE",
+                duration: "12 jours",
+                price: "1300€",
+                image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/0d/ab/49/slave-route-view-from.jpg?w=1200&h=-1&s=1"
+              },
+              {
+                title: "Nature, Culture et Traditions",
+                type: "MULTI-PAYS",
+                duration: "15 jours",
+                price: "1200€",
+                image: "https://www.geres.eu/wp-content/uploads/2019/11/geres.projets.benin_.territoires-collines-3.jpg"
+              }
+            ].map((circuit, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.05 }}
-                className="bg-[#FEF5E7] p-6 rounded-xl shadow-md text-center"
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
               >
-                <img src={`https://jeanjacquesmandel.com/wp-content/uploads/2020/05/GUELEDE-BENIN-HD-9333.jpg`} alt={item} className="w-full h-60 object-cover rounded-lg mb-4" />
-                <h3 className="text-xl font-semibold text-[#2C3E50]">{item}</h3>
-                <p className="text-[#7F8C8D] mt-2">NFT exclusif - édition limitée</p>
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={circuit.image}
+                    alt={circuit.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-sm font-semibold text-[#E67E22]">
+                      {circuit.type}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      {circuit.duration} · BÉNIN
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-[#2C3E50] mb-3">
+                    {circuit.title}
+                  </h3>
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg font-bold text-[#E67E22]">
+                      À partir de {circuit.price}
+                    </span>
+                    <Button variant="outline" className="border-[#E67E22] text-[#E67E22] hover:bg-[#E67E22]/10">
+                      Voir
+                    </Button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
+
+          <div className="text-center">
+            <Button className="bg-[#E67E22] hover:bg-[#D35400] text-white px-8 py-4 text-lg">
+              Découvrir plus de circuits
+            </Button>
+          </div>
         </div>
       </section>
+
+
 
       {/* CTA final */}
       <section className="py-20 px-4 bg-gradient-to-r from-[#E67E22] to-[#D35400] text-white text-center">

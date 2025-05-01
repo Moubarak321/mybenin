@@ -465,27 +465,27 @@ export default function Home() {
     {
       title: "Aventure",
       description: "Exploration des sites historiques",
-      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/490531659_703532318860492_6164563430914062433_n.jpg?stp=c0.119.1440.1440a_dst-jpg_s206x206_tt6&_nc_cat=109&ccb=1-7&_nc_sid=50ad20&_nc_ohc=nPYSXyw0ABMQ7kNvwHNuk9O&_nc_oc=Adkk1wHofLge-WmsOhjZCJIC2LSYE_IpjXJf2ODKNmg_dh1OZ_GNhgFxXQBAcxnqHfk&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=cjaPnG8rBs3oysP-JDGr4w&oh=00_AfF5t4vXyWzJ6xHfL3gvrMJ4pSwXGNR3e_ji0rZvOPoI5Q&oe=6819A076" // Remplacez par votre URL
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2l--d9wJd_rRXfyNWNyKhPSrYqRPoj1Q5A&s" // Remplacez par votre URL
     },
     {
       title: "Spiritualité",
       description: "Découverte du Vodun et rites sacrés",
-      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/483100032_672975191962057_4657458078077959321_n.jpg?stp=c0.79.721.721a_dst-jpg_s206x206_tt6&_nc_cat=103&ccb=1-7&_nc_sid=50ad20&_nc_ohc=SL605GuD-VEQ7kNvwGSHxkP&_nc_oc=AdlJ6IGFxn-tErIIElBdGne2McYbuMqk5Gmqbzjl1EaDTQ5cx9eVuj3O748Si7Fs3Cg&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=pDqe0wNcCQ6NmTx41AJF0A&oh=00_AfGbbcJ-Glcklr-eQ3LCMhQvuGFMphYwSIbzz99THMy2Gw&oe=68198747"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2FH9I9O-YKT7K1F4z-PPcqJ9pNYxMHyyWQ&s"
     },
     {
       title: "Artisanat",
       description: "Rencontre avec les artisans locaux",
-      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/483103406_673500358576207_7235212078854859576_n.jpg?stp=c0.48.720.720a_dst-jpg_s206x206_tt6&_nc_cat=105&ccb=1-7&_nc_sid=50ad20&_nc_ohc=gJvt5gBq298Q7kNvwEWHjN9&_nc_oc=AdkBrMmSwdK_42rMiKMKDVj33rbmxZL3OKllgqqpBB7NKfqge9TqhnbuaKN08BDc3bA&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=9C2auirSv4xJa-yaleNQig&oh=00_AfGBsxFkIAVnyf8TF0AvudHeNyrvxEYcBJdQJ4b01Kd0cA&oe=68198629"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzg5G3R9_urU6lcjtLWhb9w3ZVw901CmlEdg&s"
     },
     {
       title: "Gastronomie",
       description: "Saveurs traditionnelles béninoises",
-      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/487482335_682306154362294_5549221603387691392_n.jpg?stp=c0.46.582.582a_dst-jpg_s206x206_tt6&_nc_cat=109&ccb=1-7&_nc_sid=50ad20&_nc_ohc=UyeRdH-9s7wQ7kNvwHJBnGV&_nc_oc=AdmWD43GUb4nVVCGlGlN5xbqBn-uV3I3n0ZttOYMyGOzVBHlIc-Vo3Xr-EThLYLn7ZE&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=rHH-jOf1f3jZ47xYX_PZ0Q&oh=00_AfFJqnsW95kauohMVxp6tYCy8NU0AE_G2JOET6g15SNuEQ&oe=68196B8A"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ7Gn3WPIym4AheHk7P5JXnYZkFnp8_wTfwg&s"
     },
     {
       title: "Royautés",
       description: "Palais et royaumes ancestraux",
-      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/486714912_681546661104910_6707228333301703605_n.jpg?stp=c97.0.527.527a_dst-jpg_s206x206_tt6&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_ohc=VJ4fb_ssfNgQ7kNvwHWloVJ&_nc_oc=AdkF-rnekdocTVyYQ6jSBICPUbOsn52Uf9xkwisPpfmKR9ZMmGAwGgYpZkXTY08BUZQ&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=8a7VWKJUdsxnp90NbCnBqQ&oh=00_AfHwEY9K8mLVKrRhw6S9hcb4iiQPVEHrnjGavNAIje6fjA&oe=68198F14"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG1U3C3mw52ONB3d6MUOHgi3ly18IAx8T5UA&s"
     },
   ];
 
@@ -508,10 +508,10 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight">
             Redécouvrez votre <span className="text-[#E67E22]">héritage</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8">
+          <p className="text-xl md:text-2xl mb-6">
             Vivez la culture béninoise comme jamais auparavant — interactive, immersive et personnelle.
           </p>
           <Button className="bg-[#E67E22] hover:bg-[#D35400] text-white text-lg px-8 py-6 gap-2">
@@ -525,30 +525,30 @@ export default function Home() {
       <motion.div
         className="absolute -bottom-25 left-0 right-0 z-30" // Changé en -bottom-10 pour dépasser
         initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: -70 }} // Changé à -20 pour monter légèrement
+        animate={{ opacity: 1, y: -80 }} // Changé à -20 pour monter légèrement
         transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
       >
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4  ">
           <Carousel className="w-full">
             <CarouselContent className="-ml-1">
               {popularThemes.map((theme, index) => (
-                <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4]">
+                <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4] mt-4 ">
                   <motion.div
                     whileHover={{
                       scale: 1.05,
                       y: -5, // Légère élévation au hover
-                      boxShadow: "0 15px 30px rgba(0,0,0,0.3)" // Ombre portée accentuée
+                      boxShadow: "0 15px 15px rgba(0,0,0,0.3)" // Ombre portée accentuée
                     }}
                     className="bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
                     style={{
-                      boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
+                      // boxShadow: "0 50px 25px rgba(0,0,0,0.2)"
                     }}
                   >
-                    <div className="aspect-video overflow-hidden">
+                    <div className="relative  overflow-hidden" style={{ height: "200px" }}>
                       <img
                         src={theme.image}
                         alt={theme.title}
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full  object-cover transform hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
                     </div>

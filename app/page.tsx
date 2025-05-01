@@ -136,7 +136,7 @@
 //             Lire l'article complet
 //           </ArticleButton>
 
-          
+
 //         </div>
 //       </section>
 
@@ -180,7 +180,7 @@
 //         </section>
 //       ))}
 
-      
+
 //     </div>
 //   );
 // }
@@ -262,9 +262,9 @@
 //     allow="autoplay; encrypted-media"
 //     allowFullScreen
 //   />
-  
+
 // </div>
-        
+
 //         <motion.div 
 //           className="relative z-20 max-w-4xl mx-auto text-white"
 //           initial={{ opacity: 0, y: 20 }}
@@ -348,7 +348,7 @@
 //                 <p className="text-xl text-[#BDC3C7] mb-8">
 //                   Nous combinons technologie et authenticité pour vous offrir un voyage culturel inoubliable
 //                 </p>
-                
+
 //                 <div className="space-y-8">
 //                   {FEATURES.map((feature, index) => (
 //                     <motion.div 
@@ -367,7 +367,7 @@
 //                   ))}
 //                 </div>
 //               </div>
-              
+
 //               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
 //                 <img
 //                   src="https://images.unsplash.com/photo-1523881374236-dd34f6ac1226?q=80&w=2070"
@@ -396,7 +396,7 @@
 //             <h2 className="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-12">
 //               Ils l'ont <span className="text-[#E67E22]">adopté</span>
 //             </h2>
-            
+
 //             <div className="grid md:grid-cols-2 gap-8">
 //               {TESTIMONIALS.map((testimonial, index) => (
 //                 <motion.div
@@ -457,23 +457,52 @@ import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HeroCarousel from "@/components/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 export default function Home() {
+
+  const popularThemes = [
+    {
+      title: "Aventure",
+      description: "Exploration des sites historiques",
+      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/490531659_703532318860492_6164563430914062433_n.jpg?stp=c0.119.1440.1440a_dst-jpg_s206x206_tt6&_nc_cat=109&ccb=1-7&_nc_sid=50ad20&_nc_ohc=nPYSXyw0ABMQ7kNvwHNuk9O&_nc_oc=Adkk1wHofLge-WmsOhjZCJIC2LSYE_IpjXJf2ODKNmg_dh1OZ_GNhgFxXQBAcxnqHfk&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=cjaPnG8rBs3oysP-JDGr4w&oh=00_AfF5t4vXyWzJ6xHfL3gvrMJ4pSwXGNR3e_ji0rZvOPoI5Q&oe=6819A076" // Remplacez par votre URL
+    },
+    {
+      title: "Spiritualité",
+      description: "Découverte du Vodun et rites sacrés",
+      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/483100032_672975191962057_4657458078077959321_n.jpg?stp=c0.79.721.721a_dst-jpg_s206x206_tt6&_nc_cat=103&ccb=1-7&_nc_sid=50ad20&_nc_ohc=SL605GuD-VEQ7kNvwGSHxkP&_nc_oc=AdlJ6IGFxn-tErIIElBdGne2McYbuMqk5Gmqbzjl1EaDTQ5cx9eVuj3O748Si7Fs3Cg&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=pDqe0wNcCQ6NmTx41AJF0A&oh=00_AfGbbcJ-Glcklr-eQ3LCMhQvuGFMphYwSIbzz99THMy2Gw&oe=68198747"
+    },
+    {
+      title: "Artisanat",
+      description: "Rencontre avec les artisans locaux",
+      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/483103406_673500358576207_7235212078854859576_n.jpg?stp=c0.48.720.720a_dst-jpg_s206x206_tt6&_nc_cat=105&ccb=1-7&_nc_sid=50ad20&_nc_ohc=gJvt5gBq298Q7kNvwEWHjN9&_nc_oc=AdkBrMmSwdK_42rMiKMKDVj33rbmxZL3OKllgqqpBB7NKfqge9TqhnbuaKN08BDc3bA&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=9C2auirSv4xJa-yaleNQig&oh=00_AfGBsxFkIAVnyf8TF0AvudHeNyrvxEYcBJdQJ4b01Kd0cA&oe=68198629"
+    },
+    {
+      title: "Gastronomie",
+      description: "Saveurs traditionnelles béninoises",
+      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/487482335_682306154362294_5549221603387691392_n.jpg?stp=c0.46.582.582a_dst-jpg_s206x206_tt6&_nc_cat=109&ccb=1-7&_nc_sid=50ad20&_nc_ohc=UyeRdH-9s7wQ7kNvwHJBnGV&_nc_oc=AdmWD43GUb4nVVCGlGlN5xbqBn-uV3I3n0ZttOYMyGOzVBHlIc-Vo3Xr-EThLYLn7ZE&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=rHH-jOf1f3jZ47xYX_PZ0Q&oh=00_AfFJqnsW95kauohMVxp6tYCy8NU0AE_G2JOET6g15SNuEQ&oe=68196B8A"
+    },
+    {
+      title: "Royautés",
+      description: "Palais et royaumes ancestraux",
+      image: "https://scontent-lis1-1.xx.fbcdn.net/v/t39.30808-6/486714912_681546661104910_6707228333301703605_n.jpg?stp=c97.0.527.527a_dst-jpg_s206x206_tt6&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_ohc=VJ4fb_ssfNgQ7kNvwHWloVJ&_nc_oc=AdkF-rnekdocTVyYQ6jSBICPUbOsn52Uf9xkwisPpfmKR9ZMmGAwGgYpZkXTY08BUZQ&_nc_zt=23&_nc_ht=scontent-lis1-1.xx&_nc_gid=8a7VWKJUdsxnp90NbCnBqQ&oh=00_AfHwEY9K8mLVKrRhw6S9hcb4iiQPVEHrnjGavNAIje6fjA&oe=68198F14"
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero section transformée en storytelling émotionnel */}
       <section className="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden bg-black">
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="absolute inset-0 w-full h-full">
-          <iframe 
-            src="https://www.youtube.com/embed/Ve-W_EYHqUg?autoplay=1&loop=1&mute=1&playlist=Ve-W_EYHqUg&controls=0&modestbranding=1"
+          <img
+            src="https://beninwebtv.bj/wp-content/uploads/2023/11/Esplanade-de-lAmazone.webp"
+            alt="Armoiries du Bénin"
             className="w-full h-full object-cover"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
           />
         </div>
 
-        <motion.div 
+        <motion.div
           className="relative z-20 max-w-4xl mx-auto text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -492,27 +521,108 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Section des parcours thématiques */}
-      <section className="py-20 px-4 bg-gradient-to-b from-white to-[#FEF5E7]">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.h2 
-            className="text-4xl font-bold text-[#2C3E50] mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Vos parcours culturels <span className="text-[#E67E22]">personnalisés</span>
-          </motion.h2>
-          <p className="text-xl text-[#7F8C8D] mb-12">
-            Suivez les traces de vos ancêtres, des royaumes au Vodun, en passant par la gastronomie
-          </p>
-
-          <HeroCarousel />
+      <section className="mb-16">
+      <motion.div
+        className="absolute -bottom-25 left-0 right-0 z-30" // Changé en -bottom-10 pour dépasser
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: -70 }} // Changé à -20 pour monter légèrement
+        transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+      >
+        <div className="max-w-6xl mx-auto px-4">
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-1">
+              {popularThemes.map((theme, index) => (
+                <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4]">
+                  <motion.div
+                    whileHover={{
+                      scale: 1.05,
+                      y: -5, // Légère élévation au hover
+                      boxShadow: "0 15px 30px rgba(0,0,0,0.3)" // Ombre portée accentuée
+                    }}
+                    className="bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
+                    style={{
+                      boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
+                    }}
+                  >
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={theme.image}
+                        alt={theme.title}
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-4 bg-gradient-to-t from-black/80 to-transparent absolute bottom-0 w-full">
+                      <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
+                      <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
+                    </div>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
+      </motion.div>
       </section>
 
+      <div className="relative z-20 pt-[120px] md:pt-[150px]"> 
+
+
+{/* Ajoutez cette section après le wrapper pt-[150px] */}
+<section className="py-16 px-4 bg-[#FEF5E7]">
+  <div className="max-w-6xl mx-auto">
+    <motion.h2 
+      className="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-12 text-center"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      Nos Engagements Culturels
+    </motion.h2>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          title: "Expertise Locale",
+          description: "Une équipe 100% béninoise pour une immersion authentique",
+          icon: "🌍"
+        },
+        {
+          title: "Accessibilité",
+          description: "Technologies adaptées à tous les publics",
+          icon: "👐"
+        },
+        {
+          title: "Patrimoine Préservé",
+          description: "Contenus validés par des historiens et chefs traditionnels",
+          icon: "🏛️"
+        },
+        {
+          title: "Innovation",
+          description: "Médiation culturelle par les nouvelles technologies",
+          icon: "💡"
+        }
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ y: -5 }}
+          className="bg-white p-6 rounded-xl shadow-sm border border-[#E67E22]/20"
+        >
+          <div className="text-4xl mb-4">{item.icon}</div>
+          <h3 className="text-xl font-bold text-[#2C3E50] mb-2">{item.title}</h3>
+          <p className="text-[#7F8C8D]">{item.description}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+
       {/* Section Créateur de Légende */}
-      <section className="py-20 px-4 bg-[#2C3E50] text-white text-center">
+      <section className="py-20 px-4 bg-[#2C3E50] text-white text-center ">
         <div className="max-w-3xl mx-auto">
           <motion.h2 className="text-3xl md:text-4xl font-bold mb-4">
             Crée ta propre <span className="text-[#E67E22]">légende</span>
@@ -525,11 +635,12 @@ export default function Home() {
           </Button>
         </div>
       </section>
-
+      
+      </div>
       {/* Nouvelle section : Objets culturels à collectionner */}
       <section className="py-20 px-4 bg-white text-center">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -576,6 +687,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
     </div>
   );
 }

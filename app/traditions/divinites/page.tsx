@@ -4,6 +4,7 @@ import { Droplet, Flame, Leaf, Zap, Skull, Waves } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import Link from "next/link";
 
 const divinities = [
   {
@@ -82,57 +83,59 @@ export default function DivinitiesPage() {
 
         {/* Divinities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {divinities.map((divinity, index) => (
-            <motion.div
-              key={divinity.name}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className={`h-full overflow-hidden border-none ${divinity.color}`}>
-                <div className="relative h-48">
-                  <Image
-                    src={divinity.image}
-                    alt={divinity.name}
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: 'top center' }}
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-full bg-white shadow-md mt-1">
-                      {divinity.icon}
-                    </div>
-                    <div>
-                      <CardTitle className="text-2xl text-[#3A2D1E]">
-                        {divinity.name}
-                      </CardTitle>
-                      <p className="text-[#8B5A2B] font-medium">
-                        {divinity.domain}
-                      </p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div>
-                      <p className="text-sm text-[#3A2D1E]/80">Symbole</p>
-                      <Badge variant="outline" className="bg-white/80">
-                        {divinity.symbol}
-                      </Badge>
-                    </div>
-                    <div>
-                      <p className="text-sm text-[#3A2D1E]/80">Pouvoir</p>
-                      <p className="text-[#3A2D1E]">{divinity.power}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+  {divinities.map((divinity, index) => (
+    <motion.div
+      key={divinity.name}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.1 }}
+      viewport={{ once: true }}
+    >
+      <Link href={`traditions/divinites/detaildivinite`}>
+        <Card className={`h-full overflow-hidden border-none ${divinity.color} cursor-pointer`}>
+          <div className="relative h-48">
+            <Image
+              src={divinity.image}
+              alt={divinity.name}
+              fill
+              className="object-cover"
+              style={{ objectPosition: 'top center' }}
+            />
+          </div>
+          <CardHeader>
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-full bg-white shadow-md mt-1">
+                {divinity.icon}
+              </div>
+              <div>
+                <CardTitle className="text-2xl text-[#3A2D1E]">
+                  {divinity.name}
+                </CardTitle>
+                <p className="text-[#8B5A2B] font-medium">
+                  {divinity.domain}
+                </p>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm text-[#3A2D1E]/80">Symbole</p>
+                <Badge variant="outline" className="bg-white/80">
+                  {divinity.symbol}
+                </Badge>
+              </div>
+              <div>
+                <p className="text-sm text-[#3A2D1E]/80">Pouvoir</p>
+                <p className="text-[#3A2D1E]">{divinity.power}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </Link>
+    </motion.div>
+  ))}
+</div>
       </div>
     </div>
   );

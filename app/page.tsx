@@ -457,7 +457,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HeroCarousel from "@/components/carousel";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 
 export default function Home() {
 
@@ -491,12 +492,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Hero section transformée en storytelling émotionnel */}
+
+      {/* Header */}
+
       <section className="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden bg-black">
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="https://beninwebtv.bj/wp-content/uploads/2023/11/Esplanade-de-lAmazone.webp"
+            src="https://www.francetvinfo.fr/pictures/ELtaOA2aKITDkAEMkCi5aCyanPA/1200x675/2020/08/11/phpvFCXID.jpg"
             alt="Armoiries du Bénin"
             className="w-full h-full object-cover"
           />
@@ -521,122 +524,133 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Caroussel sous header */}
+      
       <section className="mb-16">
-      <motion.div
-        className="absolute -bottom-25 left-0 right-0 z-30" // Changé en -bottom-10 pour dépasser
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: -80 }} // Changé à -20 pour monter légèrement
-        transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-      >
-        <div className="max-w-6xl mx-auto px-4  ">
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-1">
-              {popularThemes.map((theme, index) => (
-                <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4] mt-4 ">
-                  <motion.div
-                    whileHover={{
-                      scale: 1.05,
-                      y: -5, // Légère élévation au hover
-                      boxShadow: "0 15px 15px rgba(0,0,0,0.3)" // Ombre portée accentuée
-                    }}
-                    className="bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
-                    style={{
-                      // boxShadow: "0 50px 25px rgba(0,0,0,0.2)"
-                    }}
-                  >
-                    <div className="relative  overflow-hidden" style={{ height: "200px" }}>
-                      <img
-                        src={theme.image}
-                        alt={theme.title}
-                        className="w-full h-full  object-cover transform hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-4 bg-gradient-to-t from-black/80 to-transparent absolute bottom-0 w-full">
-                      <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
-                      <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
-                    </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-      </motion.div>
-      </section>
-
-      <div className="relative z-20 pt-[120px] md:pt-[150px]"> 
-
-
-{/* Ajoutez cette section après le wrapper pt-[150px] */}
-<section className="py-16 px-4 bg-[#FEF5E7]">
-  <div className="max-w-6xl mx-auto">
-    <motion.h2 
-      className="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-12 text-center"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-    >
-      Nos Engagements Culturels
-    </motion.h2>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {[
-        {
-          title: "Expertise Locale",
-          description: "Une équipe 100% béninoise pour une immersion authentique",
-          icon: "🌍"
-        },
-        {
-          title: "Accessibilité",
-          description: "Technologies adaptées à tous les publics",
-          icon: "👐"
-        },
-        {
-          title: "Patrimoine Préservé",
-          description: "Contenus validés par des historiens et chefs traditionnels",
-          icon: "🏛️"
-        },
-        {
-          title: "Innovation",
-          description: "Médiation culturelle par les nouvelles technologies",
-          icon: "💡"
-        }
-      ].map((item, index) => (
-        <motion.div
-          key={index}
-          whileHover={{ y: -5 }}
-          className="bg-white p-6 rounded-xl shadow-sm border border-[#E67E22]/20"
-        >
-          <div className="text-4xl mb-4">{item.icon}</div>
-          <h3 className="text-xl font-bold text-[#2C3E50] mb-2">{item.title}</h3>
-          <p className="text-[#7F8C8D]">{item.description}</p>
-        </motion.div>
-      ))}
+  <motion.div
+    className="absolute -bottom-25 left-0 right-0 z-30"
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: -80 }}
+    transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+  >
+    <div className="max-w-6xl mx-auto px-4 relative"> {/* Ajout de relative pour positionner les boutons */}
+      <Carousel className="w-full relative">
+        <CarouselContent className="-ml-1">
+          {popularThemes.map((theme, index) => (
+            <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4] mt-4">
+              <motion.div
+                whileHover={{
+                  scale: 1.05,
+                  y: -5,
+                  boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
+                }}
+                className="bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
+              >
+                <div className="relative overflow-hidden" style={{ height: "200px" }}>
+                  <img
+                    src={theme.image}
+                    alt={theme.title}
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4 bg-gradient-to-t from-black/80 to-transparent absolute bottom-0 w-full">
+                  <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
+                  <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
+                </div>
+              </motion.div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        
+        {/* Boutons de navigation */}
+        <CarouselPrevious 
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+          variant="ghost"
+        />
+        <CarouselNext 
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+          variant="ghost"
+        />
+      </Carousel>
     </div>
-  </div>
+  </motion.div>
 </section>
 
 
-
-
-
-      {/* Section Créateur de Légende */}
-      <section className="py-20 px-4 bg-[#2C3E50] text-white text-center ">
-        <div className="max-w-3xl mx-auto">
-          <motion.h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Crée ta propre <span className="text-[#E67E22]">légende</span>
-          </motion.h2>
-          <p className="text-xl text-[#BDC3C7] mb-8">
-            Entrez votre nom et votre origine pour générer une histoire inspirée des épopées béninoises
-          </p>
-          <Button className="bg-[#E67E22] hover:bg-[#D35400] text-white text-lg px-8 py-4">
-            Créer mon histoire
-          </Button>
-        </div>
-      </section>
+      {/* section engagement culturel */}
       
+      <div className="relative z-20 pt-[120px] md:pt-[150px]">
+        <section className="py-16 px-4 bg-[#FEF5E7]">
+          <div className="max-w-6xl mx-auto">
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-12 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Nos Engagements Culturels
+            </motion.h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  title: "Expertise Locale",
+                  description: "Une équipe 100% béninoise pour une immersion authentique",
+                  icon: "🌍"
+                },
+                {
+                  title: "Accessibilité",
+                  description: "Technologies adaptées à tous les publics",
+                  icon: "👐"
+                },
+                {
+                  title: "Patrimoine Préservé",
+                  description: "Contenus validés par des historiens et chefs traditionnels",
+                  icon: "🏛️"
+                },
+                {
+                  title: "Innovation",
+                  description: "Médiation culturelle par les nouvelles technologies",
+                  icon: "💡"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -5 }}
+                  className="bg-white p-6 rounded-xl shadow-sm border border-[#E67E22]/20"
+                >
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <h3 className="text-xl font-bold text-[#2C3E50] mb-2">{item.title}</h3>
+                  <p className="text-[#7F8C8D]">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+        {/* Section Créateur de Légende */}
+        <section className="py-20 px-4 bg-[#2C3E50] text-white text-center ">
+          <div className="max-w-3xl mx-auto">
+            <motion.h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Crée ta propre <span className="text-[#E67E22]">légende</span>
+            </motion.h2>
+            <p className="text-xl text-[#BDC3C7] mb-8">
+              Entrez votre nom et votre origine pour générer une histoire inspirée des épopées béninoises
+            </p>
+            <Button className="bg-[#E67E22] hover:bg-[#D35400] text-white text-lg px-8 py-4">
+              Créer mon histoire
+            </Button>
+          </div>
+        </section>
+
       </div>
+
+
       {/* Nouvelle section : Objets culturels à collectionner */}
       <section className="py-20 px-4 bg-white text-center">
         <div className="max-w-6xl mx-auto">
@@ -687,7 +701,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
     </div>
   );
 }

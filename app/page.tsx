@@ -739,6 +739,134 @@ export default function Home() {
       </section>
 
 
+      {/* Section Expériences Immersives */}
+      <section className="py-20 px-4 bg-gradient-to-b from-[#FEF5E7] to-white">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2C3E50] mb-4">
+              Votre Expérience Culturelle Unique
+            </h2>
+            <p className="text-xl text-[#7F8C8D] max-w-3xl mx-auto">
+              Transformez votre smartphone en passeport interactif pour vivre le Bénin comme jamais auparavant
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Colonne Gauche */}
+            <div className="space-y-8">
+              <motion.div
+                whileHover={{ x: 5 }}
+                className="pl-6 border-l-4 border-[#E67E22]"
+              >
+                <h3 className="text-2xl font-bold text-[#2C3E50] mb-3">
+                  Explorer les Trésors Cachés
+                </h3>
+                <ul className="space-y-4 text-lg text-[#5D6D7E]">
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Déverrouillez</strong> les secrets des royaumes dahoméens grâce à notre carte interactive</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Parcourez</strong> les marchés artisanaux avec nos guides audio géolocalisés</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Décryptez</strong> les symboles Adinkra avec notre outil de reconnaissance d'image</span>
+                  </li>
+                </ul>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ x: 5 }}
+                className="pl-6 border-l-4 border-[#E67E22]"
+              >
+                <h3 className="text-2xl font-bold text-[#2C3E50] mb-3">
+                  Vivre les Traditions
+                </h3>
+                <ul className="space-y-4 text-lg text-[#5D6D7E]">
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Participez</strong> virtuellement à des cérémonies vodun avec nos expériences 360°</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Apprenez</strong> à préparer le délicieux Ayimolou avec nos chefs en vidéo live</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Écoutez</strong> les contes ancestrals racontés par les griots de votre région</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+
+            {/* Colonne Droite */}
+            <div className="space-y-8">
+              <motion.div
+                whileHover={{ x: 5 }}
+                className="pl-6 border-l-4 border-[#E67E22]"
+              >
+                <h3 className="text-2xl font-bold text-[#2C3E50] mb-3">
+                  Connectez-vous à l'Histoire
+                </h3>
+                <ul className="space-y-4 text-lg text-[#5D6D7E]">
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Marchez</strong> sur la Route des Esclaves avec notre reconstitution historique AR</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Rencontrez</strong> les Amazones du Dahomey à travers des hologrammes narratifs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Retracez</strong> votre arbre généalogique avec notre outil de recherche ancestrale</span>
+                  </li>
+                </ul>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ x: 5 }}
+                className="pl-6 border-l-4 border-[#E67E22]"
+              >
+                <h3 className="text-2xl font-bold text-[#2C3E50] mb-3">
+                  Créez des Souvenirs
+                </h3>
+                <ul className="space-y-4 text-lg text-[#5D6D7E]">
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Générez</strong> votre légende personnalisée basée sur votre origine</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Collectionnez</strong> des NFT culturels uniques lors de vos explorations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#E67E22] mr-2">•</span>
+                    <span><strong>Partagez</strong> vos découvertes avec notre réseau social dédié</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+          </div>
+
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="text-center mt-16"
+          >
+            <Button className="bg-[#E67E22] hover:bg-[#D35400] text-white text-lg px-8 py-4 shadow-lg">
+              Commencer mon Aventure Culturelle
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
 
       {/* CTA final */}
       <section className="py-20 px-4 bg-gradient-to-r from-[#E67E22] to-[#D35400] text-white text-center">

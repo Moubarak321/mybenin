@@ -874,6 +874,9 @@ export default function Home() {
           <motion.h2 className="text-3xl md:text-4xl font-bold mb-6">
             Prêt à devenir <span className="text-[#2C3E50]">héritier culturel</span> ?
           </motion.h2>
+          <p className="text-xl  max-w-2xl mx-auto">
+
+De Cotonou à Paris, ta culture ne prend pas de visa.</p>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Téléchargez l'app et transformez votre curiosité en engagement culturel profond
           </p>

@@ -464,33 +464,48 @@ import { useState } from "react";
 
 
 export default function Home() {
-  const [isNavigating, setIsNavigating] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [navigatingTo, setNavigatingTo] = useState<string | null>(null);
+  const handleNavigation = () => {
+    setIsLoading(true);
+    // Optionnel: Arrêter le loading après un timeout si la page prend trop de temps
+    setTimeout(() => setIsLoading(false), 5000);
+  };
   const popularThemes = [
     {
-      title: "Aventure",
+      id: "tourisme",
+      title: "Tourisme",
       description: "Explorez le bénin en entier",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2l--d9wJd_rRXfyNWNyKhPSrYqRPoj1Q5A&s" // Remplacez par votre URL
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2l--d9wJd_rRXfyNWNyKhPSrYqRPoj1Q5A&s", // Remplacez par votre URL
+      slug: "/tourisme"
     },
     {
+      id: "spirituality",
       title: "Spiritualité",
       description: "Le Vodun et ses rites sacrés",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2FH9I9O-YKT7K1F4z-PPcqJ9pNYxMHyyWQ&s"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2FH9I9O-YKT7K1F4z-PPcqJ9pNYxMHyyWQ&s",
+      slug: "/circuits/aventure"
     },
     {
+      id: "craftsmanship",
       title: "Artisanat",
       description: "Rencontre avec les artisans locaux",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzg5G3R9_urU6lcjtLWhb9w3ZVw901CmlEdg&s"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzg5G3R9_urU6lcjtLWhb9w3ZVw901CmlEdg&s",
+      slug: "/circuits/aventure"
     },
     {
+      id: "gastronomy",
       title: "Gastronomie",
       description: "Saveurs traditionnelles béninoises",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ7Gn3WPIym4AheHk7P5JXnYZkFnp8_wTfwg&s"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ7Gn3WPIym4AheHk7P5JXnYZkFnp8_wTfwg&s",
+      slug: "/circuits/aventure"
     },
     {
+      id: "royalties",
       title: "Royautés",
       description: "Palais et royaumes ancestraux",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG1U3C3mw52ONB3d6MUOHgi3ly18IAx8T5UA&s"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG1U3C3mw52ONB3d6MUOHgi3ly18IAx8T5UA&s",
+      slug: "/circuits/aventure"
     },
   ];
 
@@ -530,65 +545,69 @@ export default function Home() {
 
       {/* Caroussel sous header */}
 
-      
 
 
-<section className="mb-16">
-  <motion.div
-    className="absolute -bottom-25 left-0 right-0 z-30"
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: -80 }}
-    transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-  >
-    <div className="max-w-6xl mx-auto px-4 relative">
-      <Carousel className="w-full relative">
-        <CarouselContent className="-ml-1">
-          {popularThemes.map((theme, index) => (
-            <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4] mt-4">
-              <Link 
-  href="/tourisme"
-  onClick={() => setIsNavigating(true)}
->  {isNavigating && <LoadingSpinner />}
 
-                <motion.a
-                  whileHover={{
-                    scale: 1.05,
-                    y: -5,
-                    boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
-                  }}
-                  className="block bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
-                >
-                  <div className="relative overflow-hidden" style={{ height: "200px" }}>
-                    <img
-                      src={theme.image}
-                      alt={theme.title}
-                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-4 bg-gradient-to-t from-black/70 to-transparent absolute bottom-0 w-full">
-                    <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
-                    <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
-                  </div>
-                </motion.a>
-              </Link>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
+      <section className="mb-16">
+      <motion.div
+        className="absolute -bottom-25 left-0 right-0 z-30"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: -80 }}
+        transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+      >
+        <div className="max-w-6xl mx-auto px-4 relative">
+          {navigatingTo && <LoadingSpinner />}
+          
+          <Carousel className="w-full relative">
+            <CarouselContent className="-ml-1">
+              {popularThemes.map((theme) => (
+                <CarouselItem key={theme.id} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <motion.div
+                    whileHover={{
+                      scale: 1.05,
+                      y: -5,
+                      boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
+                    }}
+                    className="block bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative min-h-[300px]"
+                  >
+                    <Link 
+                      href={theme.slug} 
+                      passHref
+                      onClick={() => setNavigatingTo(theme.id)}
+                      legacyBehavior
+                    >
+                      <a className="block h-full">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src={theme.image}
+                            alt={theme.title}
+                            className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4 bg-gradient-to-t from-black/70 to-transparent absolute bottom-0 w-full">
+                          <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
+                          <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
+                        </div>
+                      </a>
+                    </Link>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
 
-        {/* Boutons de navigation */}
-        <CarouselPrevious
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
-          variant="ghost"
-        />
-        <CarouselNext
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
-          variant="ghost"
-        />
-      </Carousel>
-    </div>
-  </motion.div>
-</section>
+            <CarouselPrevious
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+              variant="ghost"
+            />
+            <CarouselNext
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+              variant="ghost"
+            />
+          </Carousel>
+        </div>
+      </motion.div>
+    </section>
 
 
       {/* section engagement culturel */}
@@ -889,7 +908,7 @@ export default function Home() {
           </motion.h2>
           <p className="text-xl  max-w-2xl mx-auto">
 
-De Cotonou à Paris, ta culture ne prend pas de visa.</p>
+            De Cotonou à Paris, ta culture ne prend pas de visa.</p>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Téléchargez l'app et transformez votre curiosité en engagement culturel profond
           </p>

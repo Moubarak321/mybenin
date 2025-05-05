@@ -458,14 +458,18 @@ import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HeroCarousel from "@/components/carousel";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Link from "next/link";
+import LoadingSpinner from "@/components/loadingSpinner";
+import { useState } from "react";
 
 
 export default function Home() {
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const popularThemes = [
     {
       title: "Aventure",
-      description: "Exploration des sites historiques",
+      description: "Explorez le bénin en entier",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2l--d9wJd_rRXfyNWNyKhPSrYqRPoj1Q5A&s" // Remplacez par votre URL
     },
     {
@@ -526,56 +530,65 @@ export default function Home() {
 
       {/* Caroussel sous header */}
 
-      <section className="mb-16">
-        <motion.div
-          className="absolute -bottom-25 left-0 right-0 z-30"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: -80 }}
-          transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-        >
-          <div className="max-w-6xl mx-auto px-4 relative"> {/* Ajout de relative pour positionner les boutons */}
-            <Carousel className="w-full relative">
-              <CarouselContent className="-ml-1">
-                {popularThemes.map((theme, index) => (
-                  <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4] mt-4">
-                    <motion.div
-                      whileHover={{
-                        scale: 1.05,
-                        y: -5,
-                        boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
-                      }}
-                      className="bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
-                    >
-                      <div className="relative overflow-hidden" style={{ height: "200px" }}>
-                        <img
-                          src={theme.image}
-                          alt={theme.title}
-                          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="p-4 bg-gradient-to-t from-black/70 to-transparent absolute bottom-0 w-full">
-                        <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
-                        <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
-                      </div>
-                    </motion.div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
+      
 
-              {/* Boutons de navigation */}
-              <CarouselPrevious
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
-                variant="ghost"
-              />
-              <CarouselNext
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
-                variant="ghost"
-              />
-            </Carousel>
-          </div>
-        </motion.div>
-      </section>
+
+<section className="mb-16">
+  <motion.div
+    className="absolute -bottom-25 left-0 right-0 z-30"
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: -80 }}
+    transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+  >
+    <div className="max-w-6xl mx-auto px-4 relative">
+      <Carousel className="w-full relative">
+        <CarouselContent className="-ml-1">
+          {popularThemes.map((theme, index) => (
+            <CarouselItem key={index} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4 aspect-[4/4] mt-4">
+              <Link 
+  href="/tourisme"
+  onClick={() => setIsNavigating(true)}
+>  {isNavigating && <LoadingSpinner />}
+
+                <motion.a
+                  whileHover={{
+                    scale: 1.05,
+                    y: -5,
+                    boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
+                  }}
+                  className="block bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative"
+                >
+                  <div className="relative overflow-hidden" style={{ height: "200px" }}>
+                    <img
+                      src={theme.image}
+                      alt={theme.title}
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4 bg-gradient-to-t from-black/70 to-transparent absolute bottom-0 w-full">
+                    <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
+                    <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
+                  </div>
+                </motion.a>
+              </Link>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+
+        {/* Boutons de navigation */}
+        <CarouselPrevious
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+          variant="ghost"
+        />
+        <CarouselNext
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+          variant="ghost"
+        />
+      </Carousel>
+    </div>
+  </motion.div>
+</section>
 
 
       {/* section engagement culturel */}

@@ -452,7 +452,7 @@
 // Réorganisation de la page d'accueil Ayizɔn avec une structure plus narrative et immersive
 // Page d'accueil modifiée sans section témoignages, remplacée par une section "Objets culturels à collectionner"
 "use client";
-
+import React from 'react';
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -475,35 +475,42 @@ export default function Home() {
     {
       id: "tourisme",
       title: "Tourisme",
-      description: "Explorez le bénin en entier",
+      description: "Explorez le bénin et ses attractions touristiques",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2l--d9wJd_rRXfyNWNyKhPSrYqRPoj1Q5A&s", // Remplacez par votre URL
       slug: "/tourisme"
     },
     {
+      id: "ethnie",
+      title: "Ethnies",
+      description: "Découvrez les groupes ethniques du Bénin",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2FH9I9O-YKT7K1F4z-PPcqJ9pNYxMHyyWQ&s",
+      slug: "/ethnies"
+    },
+    {
       id: "spirituality",
       title: "Spiritualité",
-      description: "Le Vodun et ses rites sacrés",
+      description: "Le panthéon vodun, ses divinités et rites sacrés",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2FH9I9O-YKT7K1F4z-PPcqJ9pNYxMHyyWQ&s",
       slug: "/circuits/aventure"
     },
     {
       id: "craftsmanship",
       title: "Artisanat",
-      description: "Rencontre avec les artisans locaux",
+      description: "Découvrez les chef-d'oeuvres de l'artisanat béninois",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzg5G3R9_urU6lcjtLWhb9w3ZVw901CmlEdg&s",
       slug: "/circuits/aventure"
     },
     {
       id: "gastronomy",
       title: "Gastronomie",
-      description: "Saveurs traditionnelles béninoises",
+      description: "Nos saveurs et plats traditionnels à découvrir",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ7Gn3WPIym4AheHk7P5JXnYZkFnp8_wTfwg&s",
       slug: "/circuits/aventure"
     },
     {
       id: "royalties",
       title: "Royautés",
-      description: "Palais et royaumes ancestraux",
+      description: "Palais et royaumes ancestraux à visiter",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG1U3C3mw52ONB3d6MUOHgi3ly18IAx8T5UA&s",
       slug: "/circuits/aventure"
     },
@@ -556,56 +563,58 @@ export default function Home() {
         transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
       >
         <div className="max-w-6xl mx-auto px-4 relative">
-          {navigatingTo && <LoadingSpinner />}
-          
-          <Carousel className="w-full relative">
-            <CarouselContent className="-ml-1">
-              {popularThemes.map((theme) => (
-                <CarouselItem key={theme.id} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <motion.div
-                    whileHover={{
-                      scale: 1.05,
-                      y: -5,
-                      boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
-                    }}
-                    className="block bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative min-h-[300px]"
-                  >
-                    <Link 
-                      href={theme.slug} 
-                      passHref
-                      onClick={() => setNavigatingTo(theme.id)}
-                      legacyBehavior
-                    >
-                      <a className="block h-full">
-                        <div className="relative h-48 overflow-hidden">
-                          <img
-                            src={theme.image}
-                            alt={theme.title}
-                            className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div className="p-4 bg-gradient-to-t from-black/70 to-transparent absolute bottom-0 w-full">
-                          <h3 className="text-lg font-bold text-white drop-shadow-md">{theme.title}</h3>
-                          <p className="text-white/80 mt-1 text-sm drop-shadow-sm">{theme.description}</p>
-                        </div>
-                      </a>
-                    </Link>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
+  {navigatingTo && <LoadingSpinner />}
+  
+  <Carousel className="w-full relative">
+    <CarouselContent className="-ml-1">
+      {popularThemes.map((theme) => (
+        <CarouselItem key={theme.id} className="pl-3 basis-1/2 md:basis-1/3 lg:basis-1/4">
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+              y: -5,
+              boxShadow: "0 15px 15px rgba(0,0,0,0.3)"
+            }}
+            className="block bg-white/15 backdrop-blur-md rounded-xl border-2 border-white/30 overflow-hidden cursor-pointer hover:bg-white/25 transition-all h-full relative min-h-[300px]"
+          >
+            <Link 
+              href={theme.slug} 
+              passHref
+              legacyBehavior
+            >
+              <a 
+                className="block h-full"
+                onClick={() => setNavigatingTo(theme.id)}
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={theme.image}
+                    alt={theme.title}
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4 bg-gradient-to-t from-black/70 to-transparent absolute bottom-0 w-full">
+                  <h3 className="text-lg font-bold text-white drop-shadow-md ">{theme.title}</h3>
+                  <p className="text-white/80 mt-1 text-sm drop-shadow-sm ">{theme.description}</p>
+                </div>
+              </a>
+            </Link>
+          </motion.div>
+        </CarouselItem>
+      ))}
+    </CarouselContent>
 
-            <CarouselPrevious
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
-              variant="ghost"
-            />
-            <CarouselNext
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
-              variant="ghost"
-            />
-          </Carousel>
-        </div>
+    <CarouselPrevious
+      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+      variant="ghost"
+    />
+    <CarouselNext
+      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-white/30 backdrop-blur-md border-none text-white hover:bg-white/40"
+      variant="ghost"
+    />
+  </Carousel>
+</div>
       </motion.div>
     </section>
 

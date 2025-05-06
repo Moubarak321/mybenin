@@ -496,7 +496,7 @@
 
 
 // ===============================================================================================================================================================================================================================================================================
-// deuxieme version marche************************************************************
+// TOP 1 :  deuxieme version marche************************************************************
 // ===============================================================================================================================================================================================================================================================================
 
 "use client";
@@ -927,3 +927,566 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+// ===============================================================================================================================================================================================================================================================================
+// troisieme version pas fini************************************************************
+// ===============================================================================================================================================================================================================================================================================
+// "use client";
+// import React, { useState, useEffect } from 'react';
+// import { motion } from "framer-motion";
+// import { ArrowRight, Play, ChevronRight, MapPin, Star, Calendar, Info, ChevronDown, Menu, X, Instagram, Facebook, Twitter } from "lucide-react";
+
+// // Animation variants
+// const fadeIn = {
+//   initial: { opacity: 0, y: 20 },
+//   animate: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+// };
+
+// export default function Home() {
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [menuOpen, setMenuOpen] = useState(false);
+//   const [videoModal, setVideoModal] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       if (window.scrollY > 50) {
+//         setScrolled(true);
+//       } else {
+//         setScrolled(false);
+//       }
+//     };
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   const handleNavigation = () => {
+//     setIsLoading(true);
+//     // Simulate navigation
+//     setTimeout(() => setIsLoading(false), 1000);
+//   };
+
+//   const popularThemes = [
+//     {
+//       id: "tourisme",
+//       title: "Tourisme",
+//       description: "Explorez le Bénin et ses attractions touristiques",
+//       image: "/api/placeholder/400/320",
+//       slug: "/tourisme",
+//       count: "24 lieux"
+//     },
+//     {
+//       id: "ethnie",
+//       title: "Ethnies",
+//       description: "Découvrez les groupes ethniques du Bénin",
+//       image: "/api/placeholder/400/320",
+//       slug: "/ethnies",
+//       count: "42 groupes"
+//     },
+//     {
+//       id: "spirituality",
+//       title: "Spiritualité",
+//       description: "Le panthéon vodun, ses divinités et rites sacrés",
+//       image: "/api/placeholder/400/320",
+//       slug: "/spiritualite",
+//       count: "18 pratiques"
+//     },
+//     {
+//       id: "craftsmanship",
+//       title: "Artisanat",
+//       description: "Découvrez les chef-d'oeuvres de l'artisanat béninois",
+//       image: "/api/placeholder/400/320",
+//       slug: "/artisanat",
+//       count: "35 métiers"
+//     }
+//   ];
+  
+//   const testimonials = [
+//     {
+//       id: 1,
+//       name: "Marie Dupont",
+//       origin: "Paris, France",
+//       content: "J'ai découvert une culture fascinante que je ne connaissais pas. Les guides audio m'ont permis d'approfondir chaque visite.",
+//       avatar: "/api/placeholder/64/64",
+//       rating: 5
+//     },
+//     {
+//       id: 2,
+//       name: "John Smith",
+//       origin: "New York, USA",
+//       content: "Cette application a transformé mon séjour au Bénin en une véritable aventure culturelle. Je recommande vivement!",
+//       avatar: "/api/placeholder/64/64",
+//       rating: 5
+//     },
+//     {
+//       id: 3,
+//       name: "Kofi Addo",
+//       origin: "Accra, Ghana",
+//       content: "Même pour un Africain comme moi, j'ai appris énormément sur nos voisins béninois. Contenu riche et authentique.",
+//       avatar: "/api/placeholder/64/64",
+//       rating: 4
+//     }
+//   ];
+  
+//   const experiences = [
+//     {
+//       id: "exp1",
+//       title: "Route des Esclaves",
+//       description: "Parcourez ce chemin historique avec une narration immersive",
+//       image: "/api/placeholder/400/250",
+//       category: "Histoire",
+//       rating: 4.8,
+//       reviews: 125
+//     },
+//     {
+//       id: "exp2",
+//       title: "Cérémonies Vodun",
+//       description: "Assistez virtuellement aux rituels sacrés",
+//       image: "/api/placeholder/400/250",
+//       category: "Spiritualité",
+//       rating: 4.9,
+//       reviews: 89
+//     },
+//     {
+//       id: "exp3",
+//       title: "Amazones du Dahomey",
+//       description: "Découvrez l'histoire de ces guerrières légendaires",
+//       image: "/api/placeholder/400/250",
+//       category: "Culture",
+//       rating: 4.7,
+//       reviews: 112
+//     }
+//   ];
+  
+//   const articles = [
+//     {
+//       id: "blog1",
+//       title: "Les royaumes précoloniaux du Bénin: un héritage puissant",
+//       excerpt: "Plongez dans l'histoire fascinante des royaumes qui ont façonné le Bénin d'aujourd'hui.",
+//       image: "/api/placeholder/400/250",
+//       date: "05 Mai 2025",
+//       category: "Histoire"
+//     },
+//     {
+//       id: "blog2",
+//       title: "Le Festival Vodun: entre tradition et modernité",
+//       excerpt: "Comment cette célébration ancestrale évolue tout en préservant son essence spirituelle.",
+//       image: "/api/placeholder/400/250",
+//       date: "28 Avril 2025",
+//       category: "Culture"
+//     },
+//     {
+//       id: "blog3",
+//       title: "Gastronomie béninoise: saveurs et techniques",
+//       excerpt: "Les secrets culinaires transmis de génération en génération.",
+//       image: "/api/placeholder/400/250",
+//       date: "15 Avril 2025",
+//       category: "Gastronomie"
+//     }
+//   ];
+
+//   return (
+//     <div className="min-h-screen bg-stone-50 font-sans">
+//       {/* Navbar */}
+      
+
+//       {/* Hero Section with Video Background */}
+//       <section className="relative h-screen flex items-center justify-center overflow-hidden">
+//         <div className="absolute inset-0 bg-black/40 z-10" />
+//         <div className="absolute inset-0">
+//           <img
+//             src="/api/placeholder/1920/1080"
+//             alt="Bénin Culture"
+//             className="w-full h-full object-cover"
+//           />
+//         </div>
+        
+//         <motion.div
+//           className="relative z-20 max-w-4xl mx-auto text-center text-white px-4"
+//           initial={{ opacity: 0, y: 20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//         >
+//           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+//             Découvrez le <span className="text-amber-500">Bénin</span> Authentique
+//           </h1>
+//           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+//             Une immersion virtuelle dans l'âme du Bénin: culture, histoire et traditions
+//           </p>
+//           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+//             <button className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-full flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all text-lg font-medium">
+//               Explorer maintenant
+//               <ArrowRight className="h-5 w-5" />
+//             </button>
+//             <button 
+//               onClick={() => setVideoModal(true)}
+//               className="bg-transparent border-2 border-white hover:bg-white/20 text-white px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-all text-lg font-medium"
+//             >
+//               Regarder la vidéo
+//               <Play className="h-5 w-5" />
+//             </button>
+//           </div>
+          
+//           <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+//             <motion.div
+//               animate={{ y: [0, 10, 0] }}
+//               transition={{ repeat: Infinity, duration: 1.5 }}
+//             >
+//               <ChevronDown className="h-8 w-8 text-white" />
+//             </motion.div>
+//           </div>
+//         </motion.div>
+        
+//         {/* Video Modal */}
+//         {videoModal && (
+//           <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+//             <div className="relative bg-black w-full max-w-4xl rounded-lg overflow-hidden">
+//               <button 
+//                 onClick={() => setVideoModal(false)}
+//                 className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 rounded-full p-1 transition-all"
+//               >
+//                 <X className="h-6 w-6 text-white" />
+//               </button>
+//               <div className="aspect-video bg-slate-800 flex items-center justify-center">
+//                 <Play className="h-16 w-16 text-white/50" />
+//               </div>
+//             </div>
+//           </div>
+//         )}
+//       </section>
+
+//       {/* Thématiques avec design en grille */}
+//       <section className="py-20 px-4 bg-white">
+//         <div className="max-w-7xl mx-auto">
+//           <motion.div 
+//             className="text-center mb-16"
+//             variants={fadeIn}
+//             initial="initial"
+//             whileInView="animate"
+//             viewport={{ once: true }}
+//           >
+//             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+//               Explorez par thématiques
+//             </h2>
+//             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+//               Plongez dans les différentes facettes de la culture béninoise et découvrez ses richesses infinies
+//             </p>
+//           </motion.div>
+          
+//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+//             {popularThemes.map((theme, index) => (
+//               <motion.div
+//                 key={theme.id}
+//                 initial={{ opacity: 0, y: 20 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ delay: index * 0.1 }}
+//                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
+//                 className="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer"
+//               >
+//                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+//                 <img
+//                   src={theme.image}
+//                   alt={theme.title}
+//                   className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+//                 />
+//                 <div className="absolute bottom-0 left-0 right-0 p-6 z-20 text-white">
+//                   <div className="text-amber-400 text-sm font-medium mb-1">
+//                     {theme.count}
+//                   </div>
+//                   <h3 className="text-2xl font-bold mb-2">{theme.title}</h3>
+//                   <p className="text-white/80 mb-4 line-clamp-2">{theme.description}</p>
+//                   <div className="flex items-center gap-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+//                     Découvrir
+//                     <ArrowRight className="h-4 w-4" />
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+          
+//           <div className="mt-12 text-center">
+//             <motion.button
+//               whileHover={{ scale: 1.05 }}
+//               className="inline-flex items-center text-amber-600 hover:text-amber-800 font-medium"
+//             >
+//               Voir toutes les thématiques
+//               <ChevronRight className="h-5 w-5 ml-1" />
+//             </motion.button>
+//           </div>
+//         </div>
+//       </section>
+      
+//       {/* Expériences Section */}
+//       <section className="py-20 px-4 bg-stone-50">
+//         <div className="max-w-7xl mx-auto">
+//           <motion.div 
+//             className="flex flex-col md:flex-row md:items-end justify-between mb-12"
+//             variants={fadeIn}
+//             initial="initial"
+//             whileInView="animate"
+//             viewport={{ once: true }}
+//           >
+//             <div>
+//               <span className="text-amber-600 font-medium">Immersion Culturelle</span>
+//               <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2">
+//                 Expériences Exclusives
+//               </h2>
+//               <p className="text-lg text-slate-600 mt-4 max-w-2xl">
+//                 Vivez la culture béninoise à travers des expériences immersives soigneusement conçues
+//               </p>
+//             </div>
+//             <button className="mt-6 md:mt-0 bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full inline-flex items-center gap-2 self-start md:self-auto">
+//               Toutes les expériences
+//               <ArrowRight className="h-4 w-4" />
+//             </button>
+//           </motion.div>
+          
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//             {experiences.map((exp, index) => (
+//               <motion.div
+//                 key={exp.id}
+//                 initial={{ opacity: 0, y: 20 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ delay: index * 0.1 }}
+//                 whileHover={{ y: -8 }}
+//                 className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all"
+//               >
+//                 <div className="relative">
+//                   <img 
+//                     src={exp.image} 
+//                     alt={exp.title}
+//                     className="w-full h-48 object-cover"
+//                   />
+//                   <div className="absolute top-4 left-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+//                     {exp.category}
+//                   </div>
+//                 </div>
+//                 <div className="p-6">
+//                   <h3 className="text-xl font-bold text-slate-800 mb-2">{exp.title}</h3>
+//                   <p className="text-slate-600 mb-4">{exp.description}</p>
+//                   <div className="flex items-center justify-between">
+//                     <div className="flex items-center gap-1">
+//                       <Star className="h-4 w-4 text-amber-500 fill-amber-500" />
+//                       <span className="text-slate-700 font-medium">{exp.rating}</span>
+//                       <span className="text-slate-500 text-sm">({exp.reviews})</span>
+//                     </div>
+//                     <button className="text-amber-600 hover:text-amber-800 font-medium flex items-center gap-1">
+//                       Découvrir
+//                       <ChevronRight className="h-4 w-4" />
+//                     </button>
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+      
+//       {/* Section Créer son histoire - Interactive */}
+//       <section className="py-20 px-4 bg-slate-900 text-white">
+//         <div className="max-w-7xl mx-auto">
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+//             <motion.div
+//               variants={fadeIn}
+//               initial="initial"
+//               whileInView="animate"
+//               viewport={{ once: true }}
+//             >
+//               <span className="text-amber-500 font-medium">Personnalisez votre expérience</span>
+//               <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
+//                 Créez votre propre <span className="text-amber-500">histoire béninoise</span>
+//               </h2>
+//               <p className="text-lg text-white/80 mb-8">
+//                 Notre générateur d'histoires s'inspire de votre identité pour créer un récit personnalisé qui vous connecte aux traditions béninoises. Une aventure narrative unique qui relie votre histoire à celle du Bénin.
+//               </p>
+              
+//               <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 mb-8">
+//                 <div className="space-y-6">
+//                   <div>
+//                     <label className="block text-sm font-medium text-slate-300 mb-2">Votre nom</label>
+//                     <input 
+//                       type="text" 
+//                       placeholder="Entrez votre nom"
+//                       className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+//                     />
+//                   </div>
+//                   <div>
+//                     <label className="block text-sm font-medium text-slate-300 mb-2">Votre origine</label>
+//                     <input 
+//                       type="text" 
+//                       placeholder="Pays ou région d'origine"
+//                       className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+//                     />
+//                   </div>
+//                   <button className="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+//                     Générer mon histoire
+//                     <ArrowRight className="h-5 w-5" />
+//                   </button>
+//                 </div>
+//               </div>
+//             </motion.div>
+            
+//             <motion.div
+//               initial={{ opacity: 0, x: 20 }}
+//               whileInView={{ opacity: 1, x: 0 }}
+//               viewport={{ once: true }}
+//               transition={{ delay: 0.3 }}
+//               className="relative"
+//             >
+//               <div className="aspect-[3/4] md:aspect-[4/5] relative z-10 bg-slate-800 rounded-xl overflow-hidden shadow-xl rotate-1">
+//                 <img 
+//                   src="/api/placeholder/500/600" 
+//                   alt="Histoire personnalisée"
+//                   className="w-full h-full object-cover"
+//                 />
+//                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+//                   <span className="text-amber-500 text-sm font-medium">Histoire générée</span>
+//                   <h3 className="text-2xl font-bold mt-2 mb-3">Le voyage d'Adama</h3>
+//                   <p className="text-white/80 text-sm">
+//                     Un récit inspiré par les traditions Fon qui lie votre héritage personnel aux mythes ancestraux du Bénin...
+//                   </p>
+//                 </div>
+//               </div>
+//               <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-amber-500/20 rounded-full blur-xl z-0" />
+//               <div className="absolute -top-6 -right-6 w-32 h-32 bg-amber-600/20 rounded-full blur-xl z-0" />
+//             </motion.div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Témoignages */}
+//       <section className="py-20 px-4 bg-white relative overflow-hidden">
+//         <div className="max-w-7xl mx-auto relative z-10">
+//           <motion.div 
+//             className="text-center mb-16"
+//             variants={fadeIn}
+//             initial="initial"
+//             whileInView="animate"
+//             viewport={{ once: true }}
+//           >
+//             <span className="text-amber-600 font-medium">Témoignages</span>
+//             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-4">
+//               Ce que nos utilisateurs disent
+//             </h2>
+//             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+//               Découvrez comment BeninCulture a transformé l'expérience de nos utilisateurs
+//             </p>
+//           </motion.div>
+          
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//             {testimonials.map((testimonial, index) => (
+//               <motion.div
+//                 key={testimonial.id}
+//                 initial={{ opacity: 0, y: 20 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ delay: index * 0.1 }}
+//                 className="bg-stone-50 p-6 rounded-xl shadow-sm border border-stone-100"
+//               >
+//                 <div className="flex items-center gap-2 mb-4">
+//                   {[...Array(5)].map((_, i) => (
+//                     <Star 
+//                       key={i} 
+//                       className={`h-4 w-4 ${i < testimonial.rating ? 'text-amber-500 fill-amber-500' : 'text-gray-300'}`}
+//                     />
+//                   ))}
+//                 </div>
+//                 <p className="text-slate-700 mb-6 italic">"{testimonial.content}"</p>
+//                 <div className="flex items-center gap-4">
+//                   <img 
+//                     src={testimonial.avatar} 
+//                     alt={testimonial.name}
+//                     className="w-12 h-12 rounded-full object-cover"
+//                   />
+//                   <div>
+//                     <h4 className="font-bold text-slate-800">{testimonial.name}</h4>
+//                     <span className="text-sm text-slate-500">{testimonial.origin}</span>
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+        
+//         {/* Background decorations */}
+//         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-100 rounded-full opacity-30 -translate-y-1/2 translate-x-1/3 blur-3xl" />
+//         <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-200 rounded-full opacity-30 translate-y-1/2 -translate-x-1/3 blur-3xl" />
+//       </section>
+      
+//       {/* Blog Section */}
+//       <section className="py-20 px-4 bg-stone-50">
+//         <div className="max-w-7xl mx-auto">
+//           <motion.div 
+//             className="flex flex-col md:flex-row md:items-end justify-between mb-12"
+//             variants={fadeIn}
+//             initial="initial"
+//             whileInView="animate"
+//             viewport={{ once: true }}
+//           >
+//             <div>
+//               <span className="text-amber-600 font-medium">Notre Blog</span>
+//               <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2">
+//                 Articles & Actualités
+//               </h2>
+//               <p className="text-lg text-slate-600 mt-4 max-w-2xl">
+//                 Restez informé sur la culture béninoise et nos dernières découvertes
+//               </p>
+//             </div>
+//             <button className="mt-6 md:mt-0 text-amber-600 hover:text-amber-800 font-medium inline-flex items-center gap-2 self-start md:self-auto">
+//               Tous les articles
+//               <ArrowRight className="h-4 w-4" />
+//             </button>
+//           </motion.div>
+          
+//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//             {articles.map((article, index) => (
+//               <motion.div
+//                 key={article.id}
+//                 initial={{ opacity: 0, y: 20 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ delay: index * 0.1 }}
+//                 whileHover={{ y: -8 }}
+//                 className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all"
+//               >
+//                 <div className="relative">
+//                   <img 
+//                     src={article.image} 
+//                     alt={article.title}
+//                     className="w-full h-48 object-cover"
+//                   />
+//                   <div className="absolute top-4 left-4 bg-white/90 text-amber-600 text-xs font-bold px-3 py-1 rounded-full">
+//                     {article.category}
+//                   </div>
+//                 </div>
+//                 <div className="p-6">
+//                   <div className="flex items-center text-sm text-slate-500 mb-3">
+//                     <Calendar className="h-4 w-4 mr-2" />
+//                     {article.date}
+//                   </div>
+//                   <h3 className="text-xl font-bold text-slate-800 mb-2 line-clamp-2">{article.title}</h3>
+//                   <p className="text-slate-600 mb-4 line-clamp-2">{article.excerpt}</p>
+//                   <button className="text-amber-600 hover:text-amber-800 font-medium flex items-center gap-1">
+//                     Lire l'article
+//                     <ChevronRight className="h-4 w-4" />
+//                   </button>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+//       </div>
+//   );
+// }
+      

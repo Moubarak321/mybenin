@@ -266,8 +266,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.svg" alt="Bénin Culture" width={40} height={40} className="h-10 w-10" />
-            <span className="text-2xl font-bold text-[#5C4033]">Ayizɔn</span>
+            <Image src="/logo.png" alt="Bénin Culture" width={70} height={50}  />
+            {/* <span className="text-2xl font-bold text-[#5C4033]">Ayizɔn</span> */}
           </Link>
 
           {/* Menu Desktop */}

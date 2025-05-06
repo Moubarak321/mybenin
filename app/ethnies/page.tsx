@@ -425,7 +425,7 @@ export default function EthniesPage() {
                 </div>
                 
                 <Link
-                  href={`/ethnies/${selectedEthnie.id}`}
+                  href={`/ethnies/fon`}
                   className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg transition-colors"
                 >
                   Explorer en détail <ArrowRight className="ml-2 h-4 w-4" />

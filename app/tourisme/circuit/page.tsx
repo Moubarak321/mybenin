@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic';
 // Chargement dynamique de MapWrapper sans SSR
 const MapWrapper = dynamic(
   () => import('@/components/mapWrapper'),
-  { 
+  {
     ssr: false,
     loading: () => <div className="h-full w-full bg-gray-100 rounded-lg flex items-center justify-center">Chargement de la carte...</div>
   }
@@ -64,22 +64,37 @@ export default function CircuitDetail() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Le CSS de Leaflet est maintenant importé directement dans MapWrapper */}
-      
+
       {/* Hero Section */}
-      <section className="relative h-96 bg-[url('/ouest-afrique-hero.jpg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="relative h-96 w-full overflow-hidden">
+        {/* Image de fond - Version optimisée */}
+        <div className="absolute inset-0">
+          <img
+            src="http://www.tourismebenin.bj/2021-01-08-10-47-38.png" // Chemin relatif depuis le dossier public
+            alt="Paysage d'Afrique de l'Ouest"
+            className="w-full h-full object-cover"
+            loading="eager" // Chargement prioritaire
+          />
+          {/* Overlay sombre */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        {/* Contenu */}
         <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">{circuit.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg mt-12">
+            {circuit.title}
+          </h1>
           <div className="flex gap-4 text-white text-lg mb-6">
             <span>{circuit.duration}</span>
             <span>•</span>
             <span>{circuit.price}</span>
           </div>
-          <Button className="bg-[#E67E22] hover:bg-[#D35400] text-white">
+          <Button className="bg-[#E67E22] hover:bg-[#D35400] text-white shadow-lg transition-transform hover:scale-105">
             Réserver ce circuit
           </Button>
         </div>
       </section>
+
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
@@ -88,7 +103,7 @@ export default function CircuitDetail() {
           <section className="bg-white p-6 rounded-xl shadow-sm">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Aperçu du circuit</h2>
             <p className="text-gray-600">{circuit.description}</p>
-            
+
             <div className="mt-6 grid grid-cols-1 gap-4">
               {circuit.highlights.map((highlight, index) => (
                 <div key={index} className="flex items-start">
@@ -105,11 +120,10 @@ export default function CircuitDetail() {
               <button
                 key={day.day}
                 onClick={() => setActiveDay(day.day)}
-                className={`px-4 py-2 rounded-full whitespace-nowrap ${
-                  activeDay === day.day
+                className={`px-4 py-2 rounded-full whitespace-nowrap ${activeDay === day.day
                     ? 'bg-[#E67E22] text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 Jour {day.day}
               </button>
@@ -133,10 +147,10 @@ export default function CircuitDetail() {
         <div className="h-full sticky top-4">
           <div className="bg-white p-4 rounded-xl shadow-sm h-[500px]">
             {/* Le chargement conditionnel est géré par dynamic import */}
-            <MapWrapper 
-              center={mapCenter} 
-              itinerary={circuit.itinerary} 
-              activeDay={activeDay} 
+            <MapWrapper
+              center={mapCenter}
+              itinerary={circuit.itinerary}
+              activeDay={activeDay}
             />
           </div>
         </div>

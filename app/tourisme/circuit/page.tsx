@@ -70,7 +70,7 @@ export default function CircuitDetail() {
         {/* Image de fond - Version optimisée */}
         <div className="absolute inset-0">
           <img
-            src="http://www.tourismebenin.bj/2021-01-08-10-47-38.png" // Chemin relatif depuis le dossier public
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-o5zhpPam2gzSRgcbLI7vouVbQqWcsMtDLA&s" // Chemin relatif depuis le dossier public
             alt="Paysage d'Afrique de l'Ouest"
             className="w-full h-full object-cover"
             loading="eager" // Chargement prioritaire

@@ -611,6 +611,16 @@ export default function FonDetailPage() {
     };
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = 'auto'; // Réinitialise à chaque montage
+    return () => {
+      document.body.style.overflow = 'auto'; // Cleanup
+      if (audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+      }
+    };
+  }, []);
+
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -1011,6 +1021,7 @@ export default function FonDetailPage() {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
+            key={activeTab}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

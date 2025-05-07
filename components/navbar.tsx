@@ -136,33 +136,47 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
       
-      // Update active section based on scroll position
-      const sections = document.querySelectorAll('section[id]');
-      sections.forEach(section => {
-        const sectionTop = (section as HTMLElement).offsetTop - 100;
-        const sectionHeight = (section as HTMLElement).offsetHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          const sectionId = section.getAttribute('id');
-          if (sectionId) {
-            setActiveSection(sectionId);
+      // Update active section based on scroll position only if on home page
+      if (isHomePage) {
+        const sections = document.querySelectorAll('section[id]');
+        sections.forEach(section => {
+          const sectionTop = (section as HTMLElement).offsetTop - 100;
+          const sectionHeight = (section as HTMLElement).offsetHeight;
+          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            const sectionId = section.getAttribute('id');
+            if (sectionId) {
+              setActiveSection(sectionId);
+            }
           }
-        }
-      });
+        });
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomePage]);
+
+  // Helper function to generate correct nav links
+  const getNavLink = (id: string) => {
+    if (isHomePage) {
+      return `#${id}`;
+    } else {
+      return `/#${id}`;
+    }
+  };
 
   return (
     <>
@@ -184,16 +198,16 @@ const Navbar = () => {
                 { name: 'Événements', id: 'events' },
                 { name: 'Témoignages', id: 'testimonials' }
               ].map((item) => (
-                <a 
+                <Link 
                   key={item.id}
-                  href={`#${item.id}`}
-                  className={`${activeSection === item.id 
+                  href={getNavLink(item.id)}
+                  className={`${activeSection === item.id && isHomePage
                     ? 'text-amber-600 font-medium' 
                     : scrollY > 50 ? 'text-gray-800' : 'text-white'} 
                     hover:text-amber-600 transition-colors`}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </nav>
             
@@ -248,14 +262,14 @@ const Navbar = () => {
                 { name: 'Événements', id: 'events' },
                 { name: 'Témoignages', id: 'testimonials' }
               ].map((item) => (
-                <a 
+                <Link 
                   key={item.id}
-                  href={`#${item.id}`}
-                  className={`text-2xl ${activeSection === item.id ? 'text-amber-600 font-medium' : 'text-white'}`}
+                  href={getNavLink(item.id)}
+                  className={`text-2xl ${activeSection === item.id && isHomePage ? 'text-amber-600 font-medium' : 'text-white'}`}
                   onClick={() => setMobileMenu(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </nav>
             

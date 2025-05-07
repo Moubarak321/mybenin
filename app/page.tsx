@@ -1172,24 +1172,26 @@ export default function Home() {
                 whileHover={{ y: -10 }}
                 className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer h-80"
               >
-                <div className="absolute inset-0">
+                <Link href={theme.slug} className="absolute inset-0">
                   <img
                     src={theme.image}
                     alt={theme.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity" />
-                </div>
+                </Link>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
                   <h3 className="text-2xl font-bold text-white mb-2">{theme.title}</h3>
                   <p className="text-white/80 mb-6">{theme.description}</p>
                   <div className="flex items-center">
-                    <Button 
-                      variant="ghost" 
-                      className="text-white hover:text-amber-500 hover:bg-transparent p-0 group-hover:translate-x-2 transition-transform"
-                    >
-                      Découvrir <ChevronRight className="h-5 w-5 ml-1" />
-                    </Button>
+                    <Link href={theme.slug}>
+                      <Button 
+                        variant="ghost" 
+                        className="text-white hover:text-amber-500 hover:bg-transparent p-0 group-hover:translate-x-2 transition-transform"
+                      >
+                        Découvrir <ChevronRight className="h-5 w-5 ml-1" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>

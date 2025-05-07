@@ -181,12 +181,12 @@ const Navbar = () => {
   return (
     <>
       {/* Navigation */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
+      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300  bg-white/90 backdrop-blur-md shadow-sm py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <Link href="/" className="flex items-center gap-2">
               <span className="text-2xl font-bold text-amber-600">BÉNIN</span>
-              <span className={`text-2xl font-light ${scrollY > 50 ? 'text-gray-800' : 'text-white'}`}>CULTURE</span>
+              <span className="text-2xl font-light  text-gray-800">CULTURE</span>
             </Link>
             
             {/* Desktop Menu */}
@@ -201,9 +201,9 @@ const Navbar = () => {
                 <Link 
                   key={item.id}
                   href={getNavLink(item.id)}
-                  className={`${activeSection === item.id && isHomePage
-                    ? 'text-amber-600 font-medium' 
-                    : scrollY > 50 ? 'text-gray-800' : 'text-white'} 
+                  className={`${activeSection === item.id && isHomePage ? 
+                     'text-amber-600 font-medium' : 
+                     'text-gray-800'} 
                     hover:text-amber-600 transition-colors`}
                 >
                   {item.name}

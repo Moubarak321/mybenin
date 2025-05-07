@@ -137,7 +137,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import Image from "next/image";
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -185,8 +185,9 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-amber-600">BÉNIN</span>
-              <span className="text-2xl font-light  text-gray-800">CULTURE</span>
+              {/* <span className="text-2xl font-bold text-amber-600">BÉNIN</span>
+              <span className="text-2xl font-light  text-gray-800">CULTURE</span> */}
+              <Image src="/logo.png" alt="Bénin Culture" width={70} height={50}  />
             </Link>
             
             {/* Desktop Menu */}
@@ -212,7 +213,7 @@ const Navbar = () => {
             </nav>
             
             <div className="hidden md:flex items-center gap-4">
-              <Button variant="ghost" className={`${scrollY > 50 ? 'text-gray-800 hover:text-amber-600' : 'text-white hover:text-amber-600'}`}>
+              <Button variant="ghost" className={`'text-gray-800 hover:text-amber-600' : 'text-white hover:text-amber-600'}`}>
                 Se connecter
               </Button>
               <Button className="bg-amber-600 hover:bg-amber-700 text-white">
@@ -243,8 +244,8 @@ const Navbar = () => {
           >
             <div className="flex justify-between items-center">
               <Link href="/" className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-amber-600">BÉNIN</span>
-                <span className="text-2xl font-light text-white">CULTURE</span>
+              <Image src="/logo.png" alt="Bénin Culture" width={70} height={50}  />
+                
               </Link>
               <button 
                 className="text-white"
@@ -274,7 +275,8 @@ const Navbar = () => {
             </nav>
             
             <div className="mt-auto mb-8 flex flex-col gap-4">
-              <Button variant="outline" className="text-white border-white hover:bg-white/10 text-lg py-6">
+              <Button variant="outline" className="'text-amber-600 font-medium  
+                     text-gray-800  hover:text-amber-600 transition-colors">
                 Se connecter
               </Button>
               <Button className="bg-amber-600 hover:bg-amber-700 text-white text-lg py-6">

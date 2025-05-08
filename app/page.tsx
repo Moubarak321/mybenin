@@ -117,7 +117,7 @@
 //       >
 //         <div className="max-w-6xl mx-auto px-4 relative">
 //   {navigatingTo && <LoadingSpinner />}
-  
+
 //   <Carousel className="w-full relative">
 //     <CarouselContent className="-ml-1">
 //       {popularThemes.map((theme) => (
@@ -954,11 +954,11 @@ export default function Home() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
-
+  const [navigatingTo, setNavigatingTo] = useState<string | null>(null);
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      
+
       // Update active section based on scroll position
       const sections = document.querySelectorAll('section[id]');
       sections.forEach(section => {
@@ -972,7 +972,7 @@ export default function Home() {
         }
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -999,7 +999,7 @@ export default function Home() {
       image: "https://picsum.photos/id/1015/400/300",
       slug: "/ethnies"
     },
-    
+
     {
       id: "spirituality",
       title: "Spiritualité",
@@ -1021,7 +1021,7 @@ export default function Home() {
       image: "https://picsum.photos/id/1020/400/300",
       slug: "/gastronomie"
     },
-    
+
   ];
 
   const testimonials = [
@@ -1066,23 +1066,25 @@ export default function Home() {
     }
   ];
 
+
+
   return (
     <div className="min-h-screen bg-stone-50 overflow-x-hidden font-sans">
       {/* Navigation */}
-      
-      
+
+
       {/* Hero Section */}
       <section id="home" className="h-screen relative flex items-center justify-center text-center">
-        <video 
-          autoPlay 
-          muted 
-          loop 
+        <video
+          autoPlay
+          muted
+          loop
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="video.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/60" />
-        
+
         <motion.div
           className="relative z-10 max-w-4xl mx-auto text-white px-4"
           initial={{ opacity: 0, y: 30 }}
@@ -1102,22 +1104,31 @@ export default function Home() {
             Une expérience immersive qui connecte la diaspora à son héritage culturel
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all gap-2">
-              Explorer maintenant
-              <ArrowRight className="h-5 w-5" />
-            </Button>
-            <Button 
+            <Link href="/#discover">
+              <Button className="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all gap-2">
+                Explorer maintenant
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            </Link>
+            {/* <Button 
               variant="outline" 
               className="border-white text-white hover:bg-white/20 text-lg px-8 py-6 flex items-center gap-2"
               onClick={() => setVideoModal(true)}
             >
               <Play className="h-5 w-5" />
               Voir la vidéo
-            </Button>
+            </Button> */}
+            <Link href="/histoire">
+              <Button
+                className="border-white text-white hover:bg-white/20 text-lg px-8 py-6 flex items-center gap-2"
+              >
+                Lire l'histoire du Bénin
+              </Button>
+            </Link>
           </div>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white cursor-pointer"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1135,7 +1146,7 @@ export default function Home() {
       <section id="discover" className="py-24 px-4 bg-stone-50">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center">
-            <motion.span 
+            <motion.span
               className="inline-block px-4 py-1 rounded-full bg-amber-100 text-amber-800 text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1162,7 +1173,7 @@ export default function Home() {
               Chaque thématique vous offre une porte d'entrée unique sur notre patrimoine
             </motion.p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {popularThemes.map((theme, index) => (
               <motion.div
@@ -1187,8 +1198,8 @@ export default function Home() {
                   <p className="text-white/80 mb-6">{theme.description}</p>
                   <div className="flex items-center">
                     <Link href={theme.slug}>
-                      <Button 
-                        variant="ghost" 
+                      <Button
+                        variant="ghost"
                         className="text-white hover:text-amber-500 hover:bg-transparent p-0 group-hover:translate-x-2 transition-transform"
                       >
                         Découvrir <ChevronRight className="h-5 w-5 ml-1" />
@@ -1235,7 +1246,7 @@ export default function Home() {
                   <div key={i} className="flex items-center gap-3">
                     <div className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center">
                       <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 4L4.5 7.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M1 4L4.5 7.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
                     <p className="text-white/90">{item}</p>
@@ -1246,7 +1257,7 @@ export default function Home() {
                 Télécharger l'application
               </Button>
             </motion.div>
-            
+
             <motion.div
               className="relative"
               initial={{ opacity: 0, x: 30 }}
@@ -1271,7 +1282,7 @@ export default function Home() {
                   </motion.button>
                 </div>
               </div>
-              
+
               {/* Mobile frame decorative element */}
               <div className="absolute -right-16 -bottom-12 hidden md:block">
                 <div className="w-48 h-96 rounded-3xl border-8 border-gray-900 overflow-hidden shadow-2xl transform rotate-12">
@@ -1291,7 +1302,7 @@ export default function Home() {
       <section id="experiences" className="py-24 px-4 bg-stone-50">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center">
-            <motion.span 
+            <motion.span
               className="inline-block px-4 py-1 rounded-full bg-amber-100 text-amber-800 text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1318,7 +1329,7 @@ export default function Home() {
               Redécouvrez le Bénin à travers des expériences interactives qui connectent passé et présent
             </motion.p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -1327,20 +1338,20 @@ export default function Home() {
               className="relative"
             >
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="https://picsum.photos/id/1040/600/800" 
+                <img
+                  src="https://picsum.photos/id/1040/600/800"
                   alt="Expériences culturelles"
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* Floating cards */}
-              <motion.div 
+              <motion.div
                 className="absolute -top-8 -right-8 bg-white p-4 rounded-xl shadow-lg z-20 w-64"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 }}                
+                transition={{ delay: 0.3 }}
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
@@ -1352,13 +1363,13 @@ export default function Home() {
                   Plus de 150 lieux historiques à explorer avec des guides audio
                 </p>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="absolute -bottom-8 -left-8 bg-white p-4 rounded-xl shadow-lg z-20 w-64"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.5 }}                
+                transition={{ delay: 0.5 }}
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
@@ -1371,7 +1382,7 @@ export default function Home() {
                 </p>
               </motion.div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1418,8 +1429,8 @@ export default function Home() {
                   </motion.div>
                 ))}
               </div>
-              
-              <motion.div 
+
+              <motion.div
                 className="mt-12"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1439,7 +1450,7 @@ export default function Home() {
       <section id="events" className="py-24 px-4 bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center">
-            <motion.span 
+            <motion.span
               className="inline-block px-4 py-1 rounded-full bg-amber-500/20 text-amber-400 text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1466,7 +1477,7 @@ export default function Home() {
               Participez à des événements authentiques et enrichissants au Bénin
             </motion.p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {upcomingEvents.map((event, index) => (
               <motion.div
@@ -1499,8 +1510,8 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4">{event.title}</h3>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full border-white/30 text-white hover:bg-white/10 hover:border-white"
                   >
                     Plus d'informations
@@ -1509,8 +1520,8 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          
-          <motion.div 
+
+          <motion.div
             className="mt-12 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1527,7 +1538,7 @@ export default function Home() {
       <section id="testimonials" className="py-24 px-4 bg-stone-50">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center">
-            <motion.span 
+            <motion.span
               className="inline-block px-4 py-1 rounded-full bg-amber-100 text-amber-800 text-sm font-medium mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1554,7 +1565,7 @@ export default function Home() {
               Des expériences authentiques qui transforment la façon dont vous connectez avec votre héritage
             </motion.p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -1572,8 +1583,8 @@ export default function Home() {
                 </div>
                 <p className="text-gray-700 mb-6 italic">"{testimonial.text}"</p>
                 <div className="flex items-center gap-4">
-                  <img 
-                    src={testimonial.avatar} 
+                  <img
+                    src={testimonial.avatar}
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full object-cover"
                   />
@@ -1597,7 +1608,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <motion.span 
+              <motion.span
                 className="inline-block px-4 py-1 rounded-full bg-white/20 text-white text-sm font-medium mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1611,21 +1622,21 @@ export default function Home() {
               <p className="text-xl mb-8 text-white/90">
                 Notre générateur d'histoires personnalisées utilise l'IA pour créer un récit unique basé sur votre nom et vos origines, enraciné dans le riche patrimoine béninois.
               </p>
-              
+
               <form className="space-y-4">
                 <div>
                   <label className="block text-white/90 mb-2 text-sm">Votre nom</label>
-                  <input 
-                    type="text" 
-                    placeholder="Entrez votre nom" 
+                  <input
+                    type="text"
+                    placeholder="Entrez votre nom"
                     className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
                   />
                 </div>
                 <div>
                   <label className="block text-white/90 mb-2 text-sm">Votre origine</label>
-                  <input 
-                    type="text" 
-                    placeholder="Pays ou région d'origine" 
+                  <input
+                    type="text"
+                    placeholder="Pays ou région d'origine"
                     className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
                   />
                 </div>
@@ -1634,7 +1645,7 @@ export default function Home() {
                 </Button>
               </form>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1655,12 +1666,12 @@ export default function Home() {
                 <p className="text-white/80">
                   Cette histoire révèle comment les liens du sang transcendent le temps et l'espace, rappelant à Adama que son identité est ancrée dans les traditions du Dahomey...
                 </p>
-                
+
                 {/* Decorative elements */}
                 <div className="absolute -top-6 -left-6 w-12 h-12 rounded-full bg-amber-500/20 backdrop-blur-sm border border-white/20"></div>
                 <div className="absolute -bottom-8 -right-8 w-20 h-20 rounded-full bg-amber-500/20 backdrop-blur-sm border border-white/20"></div>
               </div>
-              
+
               {/* Background decorative elements */}
               <div className="absolute -z-10 top-1/4 -right-12 w-24 h-24 rounded-full bg-white/5"></div>
               <div className="absolute -z-10 bottom-1/4 -left-12 w-32 h-32 rounded-full bg-white/5"></div>
@@ -1674,7 +1685,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-repeat" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'1\' height=\'1\' fill=\'white\'/%3E%3C/svg%3E")', backgroundSize: '30px 30px' }}></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -1682,7 +1693,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <motion.span 
+              <motion.span
                 className="inline-block px-4 py-1 rounded-full bg-amber-500/20 text-amber-400 text-sm font-medium mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1696,7 +1707,7 @@ export default function Home() {
               <p className="text-xl text-gray-300 mb-8">
                 Téléchargez notre application et plongez dans une expérience culturelle immersive, où que vous soyez dans le monde.
               </p>
-              
+
               <div className="space-y-6 mb-8">
                 {[
                   "Fonctionne hors-ligne pour vos voyages",
@@ -1707,30 +1718,30 @@ export default function Home() {
                   <div key={i} className="flex items-center gap-3">
                     <div className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center">
                       <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 4L4.5 7.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M1 4L4.5 7.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
                     <p className="text-gray-300">{feature}</p>
                   </div>
                 ))}
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-white hover:bg-gray-100 text-gray-900 px-6 py-4 flex items-center gap-2">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.1642 15.1436C17.8832 15.8933 17.5516 16.5946 17.1695 17.2474C16.6412 18.1387 16.2068 18.7539 15.8689 19.0928C15.3426 19.6205 14.7789 19.8907 14.1758 19.9054C13.7405 19.9054 13.2211 19.7744 12.6212 19.5084C12.0192 19.2437 11.4672 19.1152 10.9642 19.1152C10.4347 19.1152 9.86423 19.2437 9.25265 19.5084C8.64032 19.7744 8.14381 19.9108 7.76144 19.9189C7.18464 19.9352 6.6077 19.6579 6.03001 19.0928C5.665 18.7295 5.21201 18.0915 4.67217 17.1789C4.09447 16.2009 3.62456 15.0938 3.26356 13.8564C2.87809 12.5218 2.68402 11.2278 2.68402 9.97313C2.68402 8.50548 2.9514 7.27108 3.48693 6.27224C3.9067 5.48714 4.47766 4.86981 5.20202 4.41886C5.92638 3.96791 6.71201 3.73687 7.5609 3.7221C8.0195 3.7221 8.62541 3.87238 9.38068 4.16758C10.1332 4.46354 10.6233 4.61382 10.8495 4.61382C11.0143 4.61382 11.5547 4.43967 12.5618 4.09214C13.5159 3.76997 14.315 3.63365 14.962 3.68074C16.6237 3.79616 17.8842 4.42726 18.7394 5.5772C17.2535 6.50381 16.5195 7.76867 16.5354 9.3677C16.5513 10.6267 17.0212 11.6758 17.9422 12.5111C18.3593 12.9029 18.8228 13.2096 19.334 13.4321C18.9573 14.0319 18.5641 14.5992 18.1642 15.1436ZM14.9879 0.306491C14.9879 1.2981 14.6207 2.22153 13.8891 3.07358C12.9981 4.09214 11.9207 4.66065 10.7578 4.57134C10.7407 4.45593 10.7313 4.33456 10.7313 4.20716C10.7313 3.25755 11.1462 2.24498 11.8981 1.40831C12.2734 0.984761 12.7553 0.631358 13.3426 0.348102C13.9286 0.0690944 14.4732 -0.0580528 14.9761 0.0260222C14.9841 0.119973 14.9879 0.213923 14.9879 0.306491Z" fill="currentColor"/>
+                    <path d="M18.1642 15.1436C17.8832 15.8933 17.5516 16.5946 17.1695 17.2474C16.6412 18.1387 16.2068 18.7539 15.8689 19.0928C15.3426 19.6205 14.7789 19.8907 14.1758 19.9054C13.7405 19.9054 13.2211 19.7744 12.6212 19.5084C12.0192 19.2437 11.4672 19.1152 10.9642 19.1152C10.4347 19.1152 9.86423 19.2437 9.25265 19.5084C8.64032 19.7744 8.14381 19.9108 7.76144 19.9189C7.18464 19.9352 6.6077 19.6579 6.03001 19.0928C5.665 18.7295 5.21201 18.0915 4.67217 17.1789C4.09447 16.2009 3.62456 15.0938 3.26356 13.8564C2.87809 12.5218 2.68402 11.2278 2.68402 9.97313C2.68402 8.50548 2.9514 7.27108 3.48693 6.27224C3.9067 5.48714 4.47766 4.86981 5.20202 4.41886C5.92638 3.96791 6.71201 3.73687 7.5609 3.7221C8.0195 3.7221 8.62541 3.87238 9.38068 4.16758C10.1332 4.46354 10.6233 4.61382 10.8495 4.61382C11.0143 4.61382 11.5547 4.43967 12.5618 4.09214C13.5159 3.76997 14.315 3.63365 14.962 3.68074C16.6237 3.79616 17.8842 4.42726 18.7394 5.5772C17.2535 6.50381 16.5195 7.76867 16.5354 9.3677C16.5513 10.6267 17.0212 11.6758 17.9422 12.5111C18.3593 12.9029 18.8228 13.2096 19.334 13.4321C18.9573 14.0319 18.5641 14.5992 18.1642 15.1436ZM14.9879 0.306491C14.9879 1.2981 14.6207 2.22153 13.8891 3.07358C12.9981 4.09214 11.9207 4.66065 10.7578 4.57134C10.7407 4.45593 10.7313 4.33456 10.7313 4.20716C10.7313 3.25755 11.1462 2.24498 11.8981 1.40831C12.2734 0.984761 12.7553 0.631358 13.3426 0.348102C13.9286 0.0690944 14.4732 -0.0580528 14.9761 0.0260222C14.9841 0.119973 14.9879 0.213923 14.9879 0.306491Z" fill="currentColor" />
                   </svg>
                   App Store
                 </Button>
                 <Button className="bg-white hover:bg-gray-100 text-gray-900 px-6 py-4 flex items-center gap-2">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 20.5V3.5C3 2.4 3.9 1.5 5 1.5H19C20.1 1.5 21 2.4 21 3.5V20.5C21 21.6 20.1 22.5 19 22.5H5C3.9 22.5 3 21.6 3 20.5ZM12 18.5L17 13.5H14V7.5H10V13.5H7L12 18.5Z" fill="currentColor"/>
+                    <path d="M3 20.5V3.5C3 2.4 3.9 1.5 5 1.5H19C20.1 1.5 21 2.4 21 3.5V20.5C21 21.6 20.1 22.5 19 22.5H5C3.9 22.5 3 21.6 3 20.5ZM12 18.5L17 13.5H14V7.5H10V13.5H7L12 18.5Z" fill="currentColor" />
                   </svg>
                   Google Play
                 </Button>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1741,8 +1752,8 @@ export default function Home() {
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-r from-amber-500/40 to-amber-700/40 blur-2xl rounded-full transform rotate-12 scale-90 opacity-30"></div>
                 <div className="relative z-10">
                   <div className="overflow-hidden rounded-3xl shadow-2xl border-8 border-gray-800">
-                    <img 
-                      src="https://picsum.photos/id/1025/400/800" 
+                    <img
+                      src="https://picsum.photos/id/1025/400/800"
                       alt="Application mobile"
                       className="w-full h-full object-cover"
                     />
@@ -1754,32 +1765,32 @@ export default function Home() {
         </div>
       </section>
 
-      
-      
+
+
       {/* Video Modal */}
       <AnimatePresence>
         {videoModal && (
-          <motion.div 
+          <motion.div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <motion.div 
+            <motion.div
               className="relative w-full max-w-4xl aspect-video bg-black"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
             >
-              <button 
+              <button
                 className="absolute -top-12 right-0 text-white hover:text-amber-500"
                 onClick={() => setVideoModal(false)}
               >
                 <X className="h-8 w-8" />
               </button>
-              <iframe 
+              <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                 title="Découvrir le Bénin"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -986,12 +986,20 @@ export default function Home() {
       slug: "/tourisme"
     },
     {
+      id: "royalties",
+      title: "Royautés",
+      description: "Palais et royaumes ancestraux à visiter",
+      image: "https://picsum.photos/id/1021/400/300",
+      slug: "/royaumes"
+    },
+    {
       id: "ethnie",
       title: "Ethnies",
       description: "Découvrez les groupes ethniques du Bénin",
       image: "https://picsum.photos/id/1015/400/300",
       slug: "/ethnies"
     },
+    
     {
       id: "spirituality",
       title: "Spiritualité",
@@ -1013,13 +1021,7 @@ export default function Home() {
       image: "https://picsum.photos/id/1020/400/300",
       slug: "/gastronomie"
     },
-    {
-      id: "royalties",
-      title: "Royautés",
-      description: "Palais et royaumes ancestraux à visiter",
-      image: "https://picsum.photos/id/1021/400/300",
-      slug: "/royaumes"
-    },
+    
   ];
 
   const testimonials = [

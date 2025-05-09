@@ -1123,7 +1123,7 @@ export default function RoyautesPage() {
                 
                 <div className="mt-8 pt-6 border-t border-gray-200">
                   <Link
-                    href={`/royautes/${selectedRoyalty.id}`}
+                    href={`/royaumes/detailRoyaume`}
                     className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-xl transition-colors shadow-md hover:shadow-lg"
                   >
                     Explorer en détail <ArrowRight className="ml-2 h-5 w-5" />

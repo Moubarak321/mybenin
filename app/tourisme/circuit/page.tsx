@@ -727,7 +727,7 @@ export default function CircuitDetail() {
             </section>
 
             {/* Avis clients */}
-            <section id="avis" className="bg-white p-8 rounded-2xl shadow-sm">
+            {/* <section id="avis" className="bg-white p-8 rounded-2xl shadow-sm">
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Avis de nos voyageurs</h2>
               
               <div className="flex items-center mb-8">
@@ -791,7 +791,7 @@ export default function CircuitDetail() {
               <Button className="mt-6 bg-gray-100 hover:bg-gray-200 text-gray-800">
                 Voir tous les avis
               </Button>
-            </section>
+            </section> */}
           </div>
 
           {/* Right Column - Booking Card */}
@@ -924,54 +924,8 @@ export default function CircuitDetail() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold text-xl mb-4">AfrikaVoyages</h3>
-              <p className="text-gray-400">Spécialiste des circuits culturels et authentiques en Afrique de l'Ouest depuis 2010.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Nos destinations</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-amber-400">Bénin</a></li>
-                <li><a href="#" className="hover:text-amber-400">Burkina Faso</a></li>
-                <li><a href="#" className="hover:text-amber-400">Togo</a></li>
-                <li><a href="#" className="hover:text-amber-400">Ghana</a></li>
-                <li><a href="#" className="hover:text-amber-400">Mali</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Informations</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-amber-400">À propos de nous</a></li>
-                <li><a href="#" className="hover:text-amber-400">Conditions de voyage</a></li>
-                <li><a href="#" className="hover:text-amber-400">Politique de confidentialité</a></li>
-                <li><a href="#" className="hover:text-amber-400">FAQ</a></li>
-                <li><a href="#" className="hover:text-amber-400">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Newsletter</h4>
-              <p className="text-gray-400 mb-4">Inscrivez-vous pour recevoir nos meilleures offres</p>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Votre email"
-                  className="bg-gray-800 text-white p-2 rounded-l-lg flex-grow"
-                />
-                <button className="bg-amber-500 p-2 rounded-r-lg">
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
-            <p>© 2025 AfrikaVoyages. Tous droits réservés.</p>
-          </div>
-        </div>
-      </footer>
+      
+     
 
       {/* Modal de réservation */}
       {showBookingModal && (

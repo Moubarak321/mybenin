@@ -55,7 +55,7 @@ const ArtisanatPage = () => {
       name: 'Masques Gelede',
       category: 'sculpture',
       image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
-      price: '25,000 - 150,000 FCFA',
+      price: '15,000 - 90,000 FCFA',
       location: 'Porto-Novo',
       artisan: 'Maître Adéchina',
       description: 'Masques traditionnels sculptés représentant les ancêtres et les divinités yoruba.',

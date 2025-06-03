@@ -673,12 +673,12 @@ export default function GastronomyPage() {
           transition={{ duration: 1 }}
           className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#5C4033]/80 to-[#5C4033]/90 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#5C4033]/20 to-[#5C4033]/90 z-10" />
           <Image 
-            src="https://i.pinimg.com/originals/b4/b1/67/b4b167043347c8fe3e2c7c4d472b1e7f.jpg" 
+            src="https://critikmag.com/wp-content/uploads/2024/10/top-10-des-plats-les-plus-consommes-de-la-cuisine-beninoise-critikmag.png" 
             alt="Cuisine béninoise" 
             fill 
-            className="object-cover opacity-80"
+            className="object-cover "
             priority
           />
         </motion.div>

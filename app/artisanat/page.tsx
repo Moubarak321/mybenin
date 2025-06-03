@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, MapPin, Star, Users, Calendar, Heart, Eye, ShoppingBag, Camera } from 'lucide-react';
+import Link from 'next/link';
 
 
 interface Category {
@@ -147,11 +148,11 @@ const ArtisanatPage = () => {
     }
   ];
 
-  const filteredArtisanats = selectedCategory === 'all' 
-    ? artisanats 
+  const filteredArtisanats = selectedCategory === 'all'
+    ? artisanats
     : artisanats.filter(item => item.category === selectedCategory);
 
-   const toggleFavorite = (id: number) => {
+  const toggleFavorite = (id: number) => {
     const newFavorites = new Set(favorites);
     if (newFavorites.has(id)) {
       newFavorites.delete(id);
@@ -166,12 +167,12 @@ const ArtisanatPage = () => {
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-r from-amber-600 via-orange-600 to-red-600">
         <div className="absolute inset-0 bg-black/20"></div>
-<div
-  className="absolute inset-0 opacity-30"
-  style={{
-    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-  }}
-></div>        
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        ></div>
         <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
           <div className={`text-center transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -209,11 +210,10 @@ const ArtisanatPage = () => {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full whitespace-nowrap transition-all duration-300 transform hover:scale-105 ${
-                  selectedCategory === category.id
+                className={`flex items-center space-x-2 px-6 py-3 rounded-full whitespace-nowrap transition-all duration-300 transform hover:scale-105 ${selectedCategory === category.id
                     ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 <span className="text-xl">{category.icon}</span>
                 <span className="font-medium">{category.name}</span>
@@ -230,9 +230,8 @@ const ArtisanatPage = () => {
             {filteredArtisanats.map((item, index) => (
               <div
                 key={item.id}
-                className={`group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
+                className={`group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="relative overflow-hidden">
@@ -242,16 +241,15 @@ const ArtisanatPage = () => {
                     className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
+
                   {/* Overlay Buttons */}
                   <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
                       onClick={() => toggleFavorite(item.id)}
-                      className={`p-2 rounded-full backdrop-blur-sm transition-colors duration-200 ${
-                        favorites.has(item.id)
+                      className={`p-2 rounded-full backdrop-blur-sm transition-colors duration-200 ${favorites.has(item.id)
                           ? 'bg-red-500 text-white'
                           : 'bg-white/80 text-gray-700 hover:bg-white'
-                      }`}
+                        }`}
                     >
                       <Heart className={`w-5 h-5 ${favorites.has(item.id) ? 'fill-current' : ''}`} />
                     </button>
@@ -266,7 +264,7 @@ const ArtisanatPage = () => {
                     <span>{item.views}</span>
                   </div>
                 </div>
-                
+
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-xl font-bold text-gray-900 group-hover:text-amber-600 transition-colors duration-200">
@@ -277,9 +275,9 @@ const ArtisanatPage = () => {
                       <span className="text-sm font-medium">{item.rating}</span>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-600 mb-4 leading-relaxed">{item.description}</p>
-                  
+
                   <div className="space-y-3">
                     <div className="flex items-center text-sm text-gray-500">
                       <MapPin className="w-4 h-4 mr-2 text-amber-500" />
@@ -287,13 +285,15 @@ const ArtisanatPage = () => {
                       <span className="mx-2">•</span>
                       <span>{item.artisan}</span>
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <span className="text-lg font-bold text-amber-600">{item.price}</span>
-                      <button className="flex items-center space-x-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-200 transform hover:scale-105">
-                        <ShoppingBag className="w-4 h-4" />
-                        <span>Voir détails</span>
-                      </button>
+                      <Link href="/artisanat/details">
+                        <button className="flex items-center space-x-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-200 transform hover:scale-105">
+                          <ShoppingBag className="w-4 h-4" />
+                          <span>Voir détails</span>
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -311,7 +311,7 @@ const ArtisanatPage = () => {
                 Rencontrez les maîtres artisans qui perpétuent les traditions séculaires du Bénin
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {featuredArtisans.map((artisan, index) => (
                 <div
@@ -326,7 +326,7 @@ const ArtisanatPage = () => {
                     />
                     <div className="absolute inset-0 rounded-full bg-gradient-to-t from-amber-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-amber-600 transition-colors duration-200">
                     {artisan.name}
                   </h3>
@@ -343,13 +343,13 @@ const ArtisanatPage = () => {
 
           {/* CTA Section */}
           <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden">
-<div
-  className="absolute inset-0 opacity-30"
-  style={{
-    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='4' cy='4' r='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3Ccircle cx='28' cy='28' r='2'/%3E%3Ccircle cx='36' cy='36' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-  }}
-></div>
-            
+            <div
+              className="absolute inset-0 opacity-30"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='4' cy='4' r='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3Ccircle cx='28' cy='28' r='2'/%3E%3Ccircle cx='36' cy='36' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              }}
+            ></div>
+
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Visitez nos Ateliers d'Artisans

@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   ChefHat, Citrus, Wheat, Drumstick, Search, Filter, Clock, 
@@ -11,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 // =========================================
 // Base de données des plats béninois
@@ -186,6 +186,18 @@ interface ModalProps {
 // Palette de couleurs de l'application
 // Définies comme constantes pour faciliter la maintenance
 // =========================================
+// const COLORS = {
+//   primary: "#B45309", // Ambre principal (équivalent à amber-700)
+//   primaryLight: "#F59E0B", // Ambre clair (équivalent à amber-500)
+//   primaryDark: "#92400E", // Ambre foncé (équivalent à amber-800)
+//   accent: "#F97316", // Orange pour accent
+//   background: "#FFFBEB", // Fond ambre clair (équivalent à amber-50)
+//   text: "#78350F", // Texte principal (équivalent à amber-900)
+//   textLight: "#B45309", // Texte secondaire
+//   cardBg: "#FFFFFF", // Fond de carte
+//   overlay: "rgba(180, 83, 9, 0.8)", // Overlay pour modal
+// };
+
 const COLORS = {
   primary: "#5C4033", // Marron principal
   primaryLight: "#8B4513", // Marron clair
@@ -195,7 +207,7 @@ const COLORS = {
   text: "#5C4033", // Texte principal
   textLight: "#8B4513", // Texte secondaire
   cardBg: "#FFFFFF", // Fond de carte
-  overlay: "rgba(92, 64, 51, 0.8)", // Overlay pour modal
+  overlay: "rgba(180, 83, 9, 0.8)", // Overlay pour modal
 };
 
 // =========================================
@@ -534,11 +546,14 @@ const DishDetailsModal: React.FC<ModalProps> = ({ dish, isOpen, onClose, isFavor
             
             {/* Pied de modal avec bouton */}
             <div className="border-t border-gray-200 p-4 bg-gray-50 flex justify-end">
-              <Button 
-                className="bg-gradient-to-r from-[#5C4033] to-[#8B4513] hover:opacity-90 text-white"
-              >
-                Voir la recette complète
-              </Button>
+              <Link href="gastronomie/details">
+                <Button 
+                  className="bg-gradient-to-r from-[#5C4033] to-[#8B4513] hover:opacity-90 text-white"
+                >
+                  Voir la recette complète
+                </Button>
+              </Link>
+              
             </div>
           </motion.div>
         </motion.div>
@@ -673,7 +688,7 @@ export default function GastronomyPage() {
           transition={{ duration: 1 }}
           className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#5C4033]/20 to-[#5C4033]/90 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#5C4033]/80 to-[#5C4033]/90 z-10" />
           <Image 
             src="https://critikmag.com/wp-content/uploads/2024/10/top-10-des-plats-les-plus-consommes-de-la-cuisine-beninoise-critikmag.png" 
             alt="Cuisine béninoise" 
